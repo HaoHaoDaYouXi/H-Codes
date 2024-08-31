@@ -1,6 +1,6 @@
 package com.haohaodayouxi.shiro.config.shiro;
 
-import com.haohaodayouxi.common.redis.service.impl.CommonRedisServiceImpl;
+import com.h.common.redis.service.impl.CommonRedisServiceImpl;
 import com.haohaodayouxi.common.util.constants.StringConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ObjectUtils;
