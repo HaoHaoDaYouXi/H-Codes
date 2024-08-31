@@ -1,0 +1,15 @@
+server:
+  port: 9999
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+spring:
+  application:
+    name: demo
+
+logging:
+  level:
+    com.netty: debug

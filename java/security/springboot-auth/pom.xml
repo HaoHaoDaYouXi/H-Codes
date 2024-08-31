@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.haohaodayouxi</groupId>
+        <artifactId>lib-boot</artifactId>
+        <version>1.0.0-8-SNAPSHOT</version>
+        <relativePath/>
+    </parent>
+
+    <artifactId>springboot-auth</artifactId>
+    <version>1.0.0-8-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <lib-db.version>1.0.0-8-SNAPSHOT</lib-db.version>
+        <common-core.version>1.0.0-8-SNAPSHOT</common-core.version>
+        <common-redis.version>1.0.0-8-SNAPSHOT</common-redis.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.haohaodayouxi</groupId>
+            <artifactId>lib-db</artifactId>
+            <version>${lib-db.version}</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>com.haohaodayouxi</groupId>
+            <artifactId>common-core</artifactId>
+            <version>${common-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.haohaodayouxi</groupId>
+            <artifactId>common-redis</artifactId>
+            <version>${common-redis.version}</version>
+        </dependency>
+
+    </dependencies>
+
+</project>

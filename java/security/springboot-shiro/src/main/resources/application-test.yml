@@ -1,0 +1,71 @@
+spring:
+  datasource:
+    druid:
+      # 配置 stat-filter
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        # 需要过滤druid的访问地址
+        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/demo/druid/*'
+      # 配置 stat-view-servlet
+      stat-view-servlet:
+        enabled: true
+        # HTML 中的 Reset All 按钮是否能使用
+        reset-enable: true
+        # 访问地址：http://ip:端口/项目地址/druid/index.html
+        url-pattern: /druid/*
+        # 账号 密码
+        loginUsername: admin
+        loginPassword: 123456
+        # ip 白名单，没有配置或为空，则允许所有访问
+        allow:
+        # ip 黑名单，若白名单中也有，则优先使用
+        deny:
+    dynamic:
+      druid: # 全局druid参数，绝大部分值和默认保持一致。(现已支持的参数如下,不清楚含义不要乱设置)
+        # 连接池的配置信息
+        # 初始化大小
+        initial-size: 5
+        # 最小
+        min-idle: 5
+        # 最大
+        maxActive: 20
+        # 配置获取连接等待超时的时间
+        maxWait: 60000
+        # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+        timeBetweenEvictionRunsMillis: 60000
+        # 配置一个连接在池中最小生存的时间，单位是毫秒
+        minEvictableIdleTimeMillis: 300000
+        # 验证查询
+        validationQuery: SELECT 1
+        # 设置空闲时测试连接有效性，true检查，false不检查
+        testWhileIdle: true
+        # 设置从连接池获取连接时是否检查连接有效性，true检查，false不检查
+        testOnBorrow: false
+        # 设置从连接池归还连接时是否检查连接有效性，true检查，false不检查
+        testOnReturn: false
+        # 打开PSCache，并且指定每个连接上PSCache的大小
+        poolPreparedStatements: true
+        maxPoolPreparedStatementPerConnectionSize: 20
+        # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+        filters: stat,wall,slf4j
+        # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+        connection-properties:
+          druid.stat.mergeSql: true
+          druid.stat.slowSqlMillis: 5000
+      datasource:
+        master:
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://192.168.0.110:61307/demo?characterEncoding=UTF-8&useUnicode=true&useSSL=false&serverTimezone=Asia/Shanghai
+          username: root
+          password: 123456
+  redis:
+    host: 192.168.0.110
+    port: 6465
+    password: 123456
+    database: 0
+    timeout: 1200
+
+logging:
+  level:
+    com.haohaodayouxi: debug
