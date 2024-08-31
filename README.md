@@ -11,7 +11,7 @@
 
 # 目录
 
-- [Java开发](java/README.md)
+- [Java代码](java/README.md)
 
 # 联系方式
 
