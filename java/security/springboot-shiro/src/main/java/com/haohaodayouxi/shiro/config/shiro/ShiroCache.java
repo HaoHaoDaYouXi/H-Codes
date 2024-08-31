@@ -1,6 +1,6 @@
 package com.haohaodayouxi.shiro.config.shiro;
 
-import com.h.common.redis.service.impl.CommonRedisServiceImpl;
+import com.haohaodayouxi.common.redis.service.impl.CommonRedisServiceImpl;
 import com.haohaodayouxi.common.util.constants.StringConstant;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.shiro.cache.Cache;
