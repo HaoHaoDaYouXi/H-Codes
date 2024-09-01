@@ -13,6 +13,7 @@
         <module>springboot-template</module>
         <module>security</module>
         <module>springboot-netty</module>
+        <module>springboot-freemarker</module>
     </modules>
 
 </project>
