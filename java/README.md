@@ -7,7 +7,7 @@
 - [springboot模板示例项目](springboot-template/README.md)
 - [安全框架](security/README.md)
 - [springboot-netty](springboot-netty/README.md)
-- [springboot+freemarker](../wait.md)
+- [springboot+freemarker](springboot-freemarker/README.md)
 - [MQTT](../wait.md)
 - [camunda流程引擎](../wait.md)
 - [摄像头聚合管控](../wait.md)
