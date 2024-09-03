@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  * @author TONE
  * @date 2024/8/29
  **/
-@Component
 @Slf4j
+@Component
 public class ApiCheckInterceptor implements HandlerInterceptor {
 
     @Resource

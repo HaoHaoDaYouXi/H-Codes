@@ -47,8 +47,10 @@ public class TokenCheckInterceptor implements HandlerInterceptor {
         boolean tokenInvalid = true;
         String token = (String) CurrentParam.get(CurrentParam.AUTH_TOKEN_KEY);
         String url = request.getRequestURI();
-        log.debug("token 校验接口{}", url);
-        if (CurrentParam.has(CurrentParam.TOKEN_API_KEY) || sysAuthProperties.getTokenUris().stream().noneMatch(url::equals)) {
+        log.debug("接口：{}", url);
+        // 若有@TokenApi注解，或者是配置的token接口，则不需要获取 token，避免token接口循环获取token
+        if (!CurrentParam.has(CurrentParam.TOKEN_API_KEY) && sysAuthProperties.getTokenUris().stream().noneMatch(url::equals)) {
+            log.debug("需要获取token");
             if (ObjectUtils.isNotEmpty(token)) {
                 // 调用接口判断token是否还在缓存内，并把缓存对象放入线程对象内
                 // 只通过缓存判断token是否还可以使用，用户的信息和权限在后续的校验中处理
@@ -60,6 +62,8 @@ public class TokenCheckInterceptor implements HandlerInterceptor {
                     CurrentParam.put(CurrentParam.AUTH_STATUS_KEY, authStatus | InterceptorCode.TOKEN);
                 }
             }
+        } else {
+            log.debug("不需要获取token，避免token接口循环获取token");
         }
         // token无效 && 非公开接口
         // 0&2=0 非公开  2&2=2 公开
