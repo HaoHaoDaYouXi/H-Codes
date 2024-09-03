@@ -33,6 +33,7 @@ public class UserCheckInterceptor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+        log.debug("UserCheckInterceptor status={}", CurrentParam.get(CurrentParam.AUTH_STATUS_KEY));
         // 10 authStatus=2   公开接口，token无效
         // 100 authStatus=4  非公开接口，token有效
         // 110 authStatus=6  公开接口，token有效
@@ -53,7 +54,7 @@ public class UserCheckInterceptor implements HandlerInterceptor {
         // 1010 authStatus=10  公开接口，token无效，用户可访问
         // 1100 authStatus=12  非公开接口，token有效，用户可访问
         // 1110 authStatus=14  公开接口，token有效，用户可访问
-        log.info("用户拦截器验证成功status={}", CurrentParam.get(CurrentParam.AUTH_STATUS_KEY));
+        log.debug("UserCheckInterceptor status={}", CurrentParam.get(CurrentParam.AUTH_STATUS_KEY));
         return true;
     }
 }

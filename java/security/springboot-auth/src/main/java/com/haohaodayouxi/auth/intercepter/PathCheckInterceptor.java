@@ -34,12 +34,13 @@ public class PathCheckInterceptor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+        log.debug("PathCheckInterceptor status={}", CurrentParam.get(CurrentParam.AUTH_STATUS_KEY));
         String url = request.getRequestURI();
         Integer authStatus = (Integer) CurrentParam.get(CurrentParam.AUTH_STATUS_KEY);
         if (CurrentParam.has(CurrentParam.OPEN_API_KEY) || sysAuthProperties.getOpenApis().stream().anyMatch(url::contains)) {
-            log.debug("path拦截器设定为公开status=10");
             CurrentParam.put(CurrentParam.AUTH_STATUS_KEY, authStatus | InterceptorCode.OPEN);
         }
+        log.debug("PathCheckInterceptor status={}", CurrentParam.get(CurrentParam.AUTH_STATUS_KEY));
         return true;
     }
 

@@ -37,8 +37,7 @@ public class InitParamInterceptor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-        // 获取注解，找到处理bean，存放到List中
-        log.debug("进入基础拦截器init");
+        log.debug("InitParamInterceptor");
         CurrentParam.reset();
 
         // 获取注解类，并将其装入CurrentParam
@@ -57,7 +56,7 @@ public class InitParamInterceptor implements HandlerInterceptor {
         CurrentParam.put(CurrentParam.AUTH_TOKEN_KEY, authToken);
         // 标记状态为正常
         CurrentParam.put(CurrentParam.AUTH_STATUS_KEY, InterceptorCode.UN_OPEN);
-        log.debug("基础拦截器结束status=0");
+        log.debug("InitParamInterceptor status={}", CurrentParam.get(CurrentParam.AUTH_STATUS_KEY));
         return true;
     }
 

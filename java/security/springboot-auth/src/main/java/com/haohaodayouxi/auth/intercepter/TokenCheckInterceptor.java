@@ -38,6 +38,7 @@ public class TokenCheckInterceptor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+        log.debug("TokenCheckInterceptor status={}", CurrentParam.get(CurrentParam.AUTH_STATUS_KEY));
         // 清空线程内的token用户缓存信息，并添加新的
         CurrentUserContextHolder.set(null);
         // 0-00 非公开接口 2-10 公开接口
@@ -70,7 +71,7 @@ public class TokenCheckInterceptor implements HandlerInterceptor {
         // 10 authStatus=2   公开接口，token无效
         // 100 authStatus=4  非公开接口，token有效
         // 110 authStatus=6  公开接口，token有效
-        log.debug("token是否有效拦截器status={}", CurrentParam.get(CurrentParam.AUTH_STATUS_KEY));
+        log.debug("TokenCheckInterceptor status={}", CurrentParam.get(CurrentParam.AUTH_STATUS_KEY));
         return true;
     }
 }

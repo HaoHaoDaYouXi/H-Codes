@@ -34,6 +34,7 @@ public class ApiCheckInterceptor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+        log.debug("ApiCheckInterceptor status={}", CurrentParam.get(CurrentParam.AUTH_STATUS_KEY));
         // 1010 authStatus=10  公开接口，token无效，用户可访问
         // 1100 authStatus=12  非公开接口，token有效，用户可访问
         // 1110 authStatus=14  公开接口，token有效，用户可访问
@@ -55,7 +56,7 @@ public class ApiCheckInterceptor implements HandlerInterceptor {
         // 11010 authStatus=26   公开接口，token无效，用户可访问，接口可以访问
         // 11100 authStatus=28  非公开接口，token有效，用户可访问，接口可以访问
         // 11110 authStatus=30  公开接口，token有效，用户可访问，接口可以访问
-        log.info("用户拦截器验证成功status={}", CurrentParam.get(CurrentParam.AUTH_STATUS_KEY));
+        log.debug("ApiCheckInterceptor status={}", CurrentParam.get(CurrentParam.AUTH_STATUS_KEY));
         return true;
     }
 }
