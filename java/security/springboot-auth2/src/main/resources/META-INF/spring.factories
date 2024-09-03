@@ -1,0 +1,1 @@
+org.springframework.boot.SpringApplicationRunListener=com.haohaodayouxi.auth2.listen.MySpringApplicationRunListener

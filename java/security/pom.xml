@@ -12,6 +12,7 @@
     <modules>
         <module>springboot-shiro</module>
         <module>springboot-auth</module>
+        <module>springboot-auth2</module>
     </modules>
 
 </project>
