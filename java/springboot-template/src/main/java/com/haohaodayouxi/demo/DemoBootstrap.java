@@ -10,7 +10,10 @@ import org.springframework.context.ApplicationContext;
 import java.util.Map;
 
 /**
- * @author lenovo
+ * DemoBootstrap
+ *
+ * @author TONE
+ * @date 2024/8/31
  */
 @Slf4j
 @SpringBootApplication(scanBasePackages = {"com.haohaodayouxi"})
