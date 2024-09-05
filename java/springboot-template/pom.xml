@@ -37,6 +37,11 @@
             <artifactId>common-redis</artifactId>
             <version>${common-redis.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.haohaodayouxi</groupId>
+            <artifactId>common-log</artifactId>
+            <version>${common-redis.version}</version>
+        </dependency>
 
     </dependencies>
 
