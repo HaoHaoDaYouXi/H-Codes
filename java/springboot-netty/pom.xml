@@ -6,25 +6,15 @@
     <parent>
         <groupId>com.haohaodayouxi</groupId>
         <artifactId>lib-boot</artifactId>
-        <version>1.0.0-8-SNAPSHOT</version>
+        <version>1.0.0-21-SNAPSHOT</version>
         <relativePath/>
     </parent>
 
     <artifactId>springboot-netty</artifactId>
-    <version>1.0.0-8-SNAPSHOT</version>
+    <version>1.0.0-21-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <dependencies>
-        <!-- web -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/com.sun.jna/jna -->
         <dependency>
             <groupId>com.sun.jna</groupId>

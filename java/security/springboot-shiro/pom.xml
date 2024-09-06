@@ -6,18 +6,18 @@
     <parent>
         <groupId>com.haohaodayouxi</groupId>
         <artifactId>lib-boot</artifactId>
-        <version>1.0.0-8-SNAPSHOT</version>
+        <version>1.0.0-21-SNAPSHOT</version>
         <relativePath/>
     </parent>
 
     <artifactId>springboot-shiro</artifactId>
-    <version>1.0.0-8-SNAPSHOT</version>
+    <version>1.0.0-21-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <properties>
-        <lib-db.version>1.0.0-8-SNAPSHOT</lib-db.version>
-        <common-core.version>1.0.0-8-SNAPSHOT</common-core.version>
-        <common-redis.version>1.0.0-8-SNAPSHOT</common-redis.version>
+        <lib-db.version>1.0.0-21-SNAPSHOT</lib-db.version>
+        <common-core.version>1.0.0-21-SNAPSHOT</common-core.version>
+        <common-redis.version>1.0.0-21-SNAPSHOT</common-redis.version>
     </properties>
 
     <dependencies>

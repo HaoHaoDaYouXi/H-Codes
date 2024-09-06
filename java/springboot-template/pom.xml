@@ -15,7 +15,7 @@
     <packaging>jar</packaging>
 
     <properties>
-        <lib-db.version>1.0.0-8-SNAPSHOT</lib-db.version>
+        <lib-db.version>1.0.0-21-SNAPSHOT</lib-db.version>
         <common-core.version>1.0.0-21-SNAPSHOT</common-core.version>
         <common-redis.version>1.0.0-21-SNAPSHOT</common-redis.version>
     </properties>
