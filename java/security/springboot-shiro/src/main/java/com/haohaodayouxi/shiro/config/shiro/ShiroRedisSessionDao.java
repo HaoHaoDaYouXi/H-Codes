@@ -1,5 +1,6 @@
 package com.haohaodayouxi.shiro.config.shiro;
 
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.shiro.session.Session;
@@ -8,7 +9,6 @@ import org.apache.shiro.session.mgt.eis.AbstractSessionDAO;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 
-import javax.annotation.Resource;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Set;

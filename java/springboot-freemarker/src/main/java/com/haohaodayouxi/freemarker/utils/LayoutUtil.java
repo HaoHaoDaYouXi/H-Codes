@@ -1,6 +1,6 @@
 package com.haohaodayouxi.freemarker.utils;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * 定义模板页面

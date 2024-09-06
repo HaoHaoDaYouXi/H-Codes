@@ -3,13 +3,12 @@ package com.haohaodayouxi.auth.intercepter;
 import com.haohaodayouxi.auth.config.SysAuthProperties;
 import com.haohaodayouxi.common.core.constants.CurrentParam;
 import com.haohaodayouxi.common.core.constants.InterceptorCode;
+import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * Api访问权限拦截器

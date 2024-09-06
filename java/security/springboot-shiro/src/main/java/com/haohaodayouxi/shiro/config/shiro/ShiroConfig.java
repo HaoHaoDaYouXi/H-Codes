@@ -17,7 +17,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 
-import javax.servlet.Filter;
+import jakarta.servlet.Filter;
+
 import java.util.*;
 
 /**

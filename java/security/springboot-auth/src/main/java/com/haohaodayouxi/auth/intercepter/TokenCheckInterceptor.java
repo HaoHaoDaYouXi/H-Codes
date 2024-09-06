@@ -5,14 +5,13 @@ import com.haohaodayouxi.common.core.constants.CurrentParam;
 import com.haohaodayouxi.common.core.constants.CurrentUserContextHolder;
 import com.haohaodayouxi.common.core.constants.InterceptorCode;
 import com.haohaodayouxi.common.core.model.bo.LoginCacheBO;
+import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * Token有效校验拦截器，此处只判断token是否有效，不做具体的用户数据校验

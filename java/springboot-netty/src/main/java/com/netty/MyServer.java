@@ -7,9 +7,8 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import jakarta.annotation.PreDestroy;
 import lombok.extern.slf4j.Slf4j;
-
-import javax.annotation.PreDestroy;
 
 /**
  * MyServer

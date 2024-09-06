@@ -2,13 +2,13 @@ package com.haohaodayouxi.shiro.config.shiro;
 
 import com.haohaodayouxi.common.redis.service.impl.CommonRedisServiceImpl;
 import com.haohaodayouxi.common.util.constants.StringConstant;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.session.UnknownSessionException;
 import org.apache.shiro.session.mgt.eis.AbstractSessionDAO;
 
-import javax.annotation.Resource;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;

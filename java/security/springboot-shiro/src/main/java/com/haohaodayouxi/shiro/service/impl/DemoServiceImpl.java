@@ -5,12 +5,12 @@ import com.haohaodayouxi.common.core.interfaces.InitService;
 import com.haohaodayouxi.common.util.base.SubBatchUtil;
 import com.haohaodayouxi.shiro.event.DemoEvent;
 import com.haohaodayouxi.shiro.service.DemoService;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;

@@ -2,11 +2,11 @@ package com.haohaodayouxi.shiro.config.shiro;
 
 import com.haohaodayouxi.common.redis.service.impl.CommonRedisServiceImpl;
 import com.haohaodayouxi.common.util.constants.StringConstant;
+import jakarta.annotation.Resource;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheException;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
