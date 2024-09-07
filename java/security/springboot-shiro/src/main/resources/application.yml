@@ -11,7 +11,7 @@ spring:
   profiles:
     active: dev
   application:
-    name: demo
+    name: shiro
   main:
     allow-bean-definition-overriding: true
     allow-circular-references: true
@@ -20,11 +20,6 @@ spring:
     time-zone: "Asia/Shanghai"
     serialization:
       WRITE_DATES_AS_TIMESTAMPS: false
-  autoconfigure:
-    # 忽略默认自动注入druid
-    # DruidDataSourceAutoConfigure默认会注入一个DataSourceWrapper，其会在原生的spring.datasource下找 url, username, password 等。
-    # 动态数据源 URL 等配置是在 dynamic 下，因此需要排除，否则会报错。
-    exclude: com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure
 
 mybatis-plus:
   configuration:
