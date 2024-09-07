@@ -5,9 +5,10 @@
         <!--@mbg.generated-->
         <!--@Table demo_id-->
         <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="t" jdbcType="VARCHAR" property="t"/>
     </resultMap>
     <sql id="Base_Column_List">
         <!--@mbg.generated-->
-        id
+        id,t
     </sql>
 </mapper>
