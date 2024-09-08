@@ -58,6 +58,8 @@ spring:
         connection-properties:
           druid.stat.mergeSql: true
           druid.stat.slowSqlMillis: 5000
+        # 异步初始化
+        asyncInit: true
       datasource:
         master:
           driver-class-name: com.mysql.cj.jdbc.Driver
