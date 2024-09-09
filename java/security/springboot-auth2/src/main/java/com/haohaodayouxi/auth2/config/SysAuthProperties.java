@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import java.util.List;
 @Configuration
 @ConfigurationProperties("h.sys.auth")
 public class SysAuthProperties implements Serializable {
+    @Serial
     private static final long serialVersionUID = -7218460583434903529L;
     /**
      * 开放的接口地址，包含就认为是开放的，公开接口，可以没有token访问

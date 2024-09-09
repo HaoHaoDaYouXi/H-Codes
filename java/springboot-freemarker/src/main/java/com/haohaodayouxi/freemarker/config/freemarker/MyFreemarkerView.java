@@ -1,9 +1,8 @@
 package com.haohaodayouxi.freemarker.config.freemarker;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerView;
-
-import jakarta.servlet.http.HttpServletRequest;
 
 import java.io.*;
 import java.util.Map;
@@ -21,17 +20,14 @@ public class MyFreemarkerView extends FreeMarkerView {
 
     @Override
     public void exposeHelpers(Map<String, Object> model, HttpServletRequest request) throws Exception {
-        InputStream is = this.getClass().getResourceAsStream("/static.properties");
-        Properties properties = new Properties();
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
+        try (InputStream is = this.getClass().getResourceAsStream("/static.properties"); BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
+            Properties properties = new Properties();
             properties.load(br);
             model.put("static", properties.getProperty("static"));
         } catch (FileNotFoundException e) {
             log.error("未找到该文件", e);
         } catch (IOException e) {
             log.error("读取文件异常", e);
-        } finally {
-            is.close();
         }
         super.exposeHelpers(model, request);
     }

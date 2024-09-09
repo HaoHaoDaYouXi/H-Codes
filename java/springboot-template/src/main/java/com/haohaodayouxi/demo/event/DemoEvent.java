@@ -3,6 +3,8 @@ package com.haohaodayouxi.demo.event;
 import lombok.Getter;
 import org.springframework.context.ApplicationEvent;
 
+import java.io.Serial;
+
 /**
  * 事件对象
  *
@@ -11,6 +13,7 @@ import org.springframework.context.ApplicationEvent;
  */
 @Getter
 public class DemoEvent extends ApplicationEvent {
+    @Serial
     private static final long serialVersionUID = 2265140463184177170L;
     /**
      * 事件内容 具体参数可以自行定义

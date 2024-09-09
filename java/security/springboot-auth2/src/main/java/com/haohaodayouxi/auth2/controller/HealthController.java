@@ -22,7 +22,7 @@ public class HealthController {
     /**
      * 项目名称
      */
-    @Value("${spring.application.name:demo}")
+    @Value("${spring.application.name:auth2}")
     private String applicationName;
 
 
@@ -30,7 +30,7 @@ public class HealthController {
     @GetMapping("/h-open/check")
     public String healthCheck() {
         log.info("healthCheck");
-        return String.format(applicationName + " is health! %s", LocalDateTime.now().toString());
+        return String.format(applicationName + " is health! %s", LocalDateTime.now());
     }
 
 }

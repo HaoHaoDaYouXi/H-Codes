@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Set;
 
@@ -19,6 +20,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ShiroUserInfo implements Serializable {
+    @Serial
     private static final long serialVersionUID = -3131778490613692266L;
 
     private Long id;

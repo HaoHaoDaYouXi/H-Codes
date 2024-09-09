@@ -21,7 +21,7 @@ public class HealthController {
     /**
      * 项目名称
      */
-    @Value("${spring.application.name:demo}")
+    @Value("${spring.application.name:auth}")
     private String applicationName;
 
 
