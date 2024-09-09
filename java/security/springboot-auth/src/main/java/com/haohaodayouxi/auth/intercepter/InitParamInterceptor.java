@@ -6,13 +6,12 @@ import com.haohaodayouxi.common.core.annotation.WhiteApi;
 import com.haohaodayouxi.common.core.constants.CurrentParam;
 import com.haohaodayouxi.common.core.constants.InterceptorCode;
 import com.haohaodayouxi.common.util.business.TokenUtil;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
-
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
@@ -66,16 +65,13 @@ public class InitParamInterceptor implements HandlerInterceptor {
      */
     private void parseAnnotations(Annotation[] methodAnnotations) {
         for (Annotation item : methodAnnotations) {
-            if (item instanceof OpenApi) {
-                OpenApi api = (OpenApi) item;
+            if (item instanceof OpenApi api) {
                 CurrentParam.put(CurrentParam.OPEN_API_KEY, api);
             }
-            if (item instanceof TokenApi) {
-                TokenApi api = (TokenApi) item;
+            if (item instanceof TokenApi api) {
                 CurrentParam.put(CurrentParam.TOKEN_API_KEY, api);
             }
-            if (item instanceof WhiteApi) {
-                WhiteApi api = (WhiteApi) item;
+            if (item instanceof WhiteApi api) {
                 CurrentParam.put(CurrentParam.WHITE_API_KEY, api);
             }
         }

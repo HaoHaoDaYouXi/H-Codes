@@ -28,7 +28,7 @@ public class HealthController {
     @GetMapping("/h-open/check")
     public String healthCheck() {
         log.info("healthCheck");
-        return String.format(applicationName + " is health! %s", LocalDateTime.now().toString());
+        return String.format(applicationName + " is health! %s", LocalDateTime.now());
     }
 
 }
