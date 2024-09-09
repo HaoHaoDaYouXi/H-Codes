@@ -37,9 +37,23 @@
             <artifactId>common-redis</artifactId>
             <version>${common-redis.version}</version>
         </dependency>
+
+        <!-- shiro -->
         <dependency>
             <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-spring-boot-web-starter</artifactId>
+            <artifactId>shiro-spring</artifactId>
+            <classifier>jakarta</classifier>
+        </dependency>
+        <!-- 引入适配jakarta的依赖包 -->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <classifier>jakarta</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+            <classifier>jakarta</classifier>
         </dependency>
 
     </dependencies>
