@@ -10,11 +10,11 @@ spring:
       # 配置 stat-view-servlet
       stat-view-servlet:
         enabled: true
-        # 访问地址：http://ip:端口/项目地址/druid/index.html
+        # 访问地址，默认：/druid/*    http://ip:端口/项目地址/druid/index.html
         url-pattern: /druid/*
-        # ip 白名单，没有配置或为空，则允许所有访问
+        # ip 白名单，没有配置或为空，默认 127.0.0.1
         allow:
-        # ip 黑名单，若白名单中也有，则优先使用
+        # ip 黑名单，没有配置或为空，则允许所有访问
         deny:
         # 账号 密码
         loginUsername: admin
@@ -58,6 +58,8 @@ spring:
         connection-properties:
           druid.stat.mergeSql: true
           druid.stat.slowSqlMillis: 5000
+        # 异步初始化
+        asyncInit: true
       datasource:
         master:
           driver-class-name: com.mysql.cj.jdbc.Driver
