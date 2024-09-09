@@ -11,4 +11,10 @@
         <!--@mbg.generated-->
         id,t
     </sql>
+
+    <select id="getDemoIdList" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from demo_id
+    </select>
 </mapper>
