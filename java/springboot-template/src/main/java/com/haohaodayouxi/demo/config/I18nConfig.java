@@ -35,12 +35,14 @@ public class I18nConfig {
         public Locale resolveLocale(HttpServletRequest request) {
             // 根据请求头Content-Language 获取语言信息
             String language = request.getHeader(HttpHeaders.CONTENT_LANGUAGE);
+            log.debug("language: {}", language);
             Locale locale = request.getLocale();
             if (ObjectUtils.isNotEmpty(language)) {
                 // 语言信息格式为：zh_CN(中文)、en_US(英文)
                 String[] split = language.split("_");
                 locale = Locale.of(split[0], split[1]);
             }
+            log.debug("locale: {}", locale);
             return locale;
         }
 
