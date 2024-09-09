@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
  * MybatisPlusConfig
  *
  * @author TONE
- * @date 2024/8/24
+ * @date 2024/9/9
  */
 @Configuration
 public class MybatisPlusConfig {

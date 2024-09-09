@@ -7,6 +7,7 @@ import com.haohaodayouxi.common.core.model.vo.page.PageBaseVO;
 import com.haohaodayouxi.common.log.annotation.AutoLog;
 import com.haohaodayouxi.demo.model.db.DemoId;
 import com.haohaodayouxi.demo.service.DemoService;
+import com.haohaodayouxi.demo.utils.I18nMessageUtils;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -52,5 +53,12 @@ public class HealthController {
     public Response<PageBaseVO<DemoId>> getList(@RequestBody PageBaseReq req) {
         log.info("getList req:{}", req);
         return OkResponse.QUERY.toResponse(demoService.getList(req));
+    }
+
+    @AutoLog(value = "i18n", keepLogServiceName = "TmpKeepLogServiceImpl")
+    @PostMapping("/i18n")
+    public Response<String> i18n() {
+        String s = I18nMessageUtils.message("test");
+        return OkResponse.QUERY.toResponse(s);
     }
 }

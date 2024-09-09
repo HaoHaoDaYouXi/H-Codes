@@ -12,6 +12,11 @@ spring:
     active: dev
   application:
     name: demo
+  # 资源信息
+  messages:
+    # 国际化资源文件路径，多个用","分隔
+    basename: i18n/messages
+    encoding: UTF-8
   main:
     allow-bean-definition-overriding: true
     allow-circular-references: true
