@@ -4,4 +4,6 @@
 
 # 目录
 
+- [v3-vite模板项目](v3-vite-template/README.md)
+
 ----
