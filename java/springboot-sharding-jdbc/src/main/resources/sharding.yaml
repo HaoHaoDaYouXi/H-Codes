@@ -1,0 +1,78 @@
+# 具体参看官网文档说明：https://shardingsphere.apache.org/document/current/cn/user-manual/shardingsphere-jdbc/yaml-config/
+
+# 数据源名称要和动态数据源中配置的名称一致
+databaseName: sharding
+
+# 是否开启SQL显示
+props:
+  sql-show: true
+
+# 数据源配置
+dataSources:
+  demo:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    jdbcUrl: jdbc:mysql://192.168.0.110:61307/demo?characterEncoding=UTF-8&useUnicode=true&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+
+# 规则配置
+rules:
+  - !SHARDING
+    tables: # 数据分片规则配置
+      demo_id: # 逻辑表名称
+        actualDataNodes: demo.demo_id_$->{0..9} # 由数据源名 + 表名组成（参考 Inline 语法规则）
+        databaseStrategy: # 分库策略，缺省表示使用默认分库策略，以下的分片策略只能选其一
+#          standard: # 用于单分片键的标准分片场景
+#            shardingColumn: # 分片列名称
+#            shardingAlgorithmName: # 分片算法名称
+#            complex: # 用于多分片键的复合分片场景
+#              shardingColumns: # 分片列名称，多个列以逗号分隔
+#              shardingAlgorithmName: # 分片算法名称
+#            hint: # Hint 分片策略
+#              shardingAlgorithmName: # 分片算法名称
+            none: # 不分片
+        tableStrategy: # 分表策略，同分库策略
+          standard: # 用于单分片键的标准分片场景
+            shardingColumn: id # 分片列名称
+            shardingAlgorithmName: id_inline # 分片算法名称
+        keyGenerateStrategy:  # 分布式序列策略
+          column: id # 自增列名称，缺省表示不使用自增主键生成器
+          keyGeneratorName: snowflake # 分布式序列算法名称
+#        auditStrategy: # 分片审计策略
+#          auditorNames: audit # 分片审计算法名称
+#          allowHintDisable: true # 是否禁用分片审计hint
+
+#    autoTables: # 自动分片表规则配置
+#      t_order_auto: # 逻辑表名称
+#        actualDataSources (?): # 数据源名称
+#        shardingStrategy: # 切分策略
+#          standard: # 用于单分片键的标准分片场景
+#            shardingColumn: # 分片列名称
+#            shardingAlgorithmName: # 自动分片算法名称
+#    bindingTables (+): # 绑定表规则列表
+#      - <logic_table_name_1, logic_table_name_2, ...>
+#      - <logic_table_name_1, logic_table_name_2, ...>
+#    defaultDatabaseStrategy: # 默认数据库分片策略
+#    defaultTableStrategy: # 默认表分片策略
+#    defaultKeyGenerateStrategy: # 默认的分布式序列策略
+#    defaultShardingColumn: # 默认分片列名称
+
+    shardingAlgorithms:  # 分片算法配置
+      id_inline:
+        type: INLINE
+        props:
+          algorithm-expression: demo_id_$->{id % 10}
+    keyGenerators: # 分布式序列配置
+      snowflake:
+        type: SNOWFLAKE
+        props:
+          worker-id: 123
+#    auditors:  # 分片审计算法配置
+#      audit: # 分片审计算法名称
+#        type: # 分片审计算法类型
+#        props: # 分片审计算法属性配置
+
+#  - !BROADCAST
+#    tables: # 广播表规则列表
+#      - <table_name>
+#      - <table_name>
