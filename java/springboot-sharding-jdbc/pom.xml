@@ -45,14 +45,6 @@
         <dependency>
             <groupId>org.apache.shardingsphere</groupId>
             <artifactId>shardingsphere-jdbc</artifactId>
-            <version>5.5.0</version>
-            <exclusions>
-                <exclusion>
-                    <!--test 5.5.0版本暂时没有-->
-                    <groupId>org.apache.shardingsphere</groupId>
-                    <artifactId>shardingsphere-test-util</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
     </dependencies>
