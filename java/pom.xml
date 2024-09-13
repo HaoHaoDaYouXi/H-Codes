@@ -19,6 +19,7 @@
         <module>security</module>
         <module>springboot-netty</module>
         <module>springboot-freemarker</module>
+        <module>springboot-sharding-jdbc</module>
     </modules>
 
 </project>
