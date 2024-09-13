@@ -48,6 +48,11 @@ public class DemoServiceImpl extends ServiceImpl<DemoIdMapper, DemoId> implement
     public void init() {
         log.info("初始化执行示例");
         publishDemoEvent();
+        PageBaseReq req = new PageBaseReq();
+        req.setPageNum(1);
+        req.setPageSize(4);
+        PageBaseVO<DemoId> data = getList(req);
+        log.info("PageBaseVO data:{}", data);
         // 需要初始化的方法...
     }
 

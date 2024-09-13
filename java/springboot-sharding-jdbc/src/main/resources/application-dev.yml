@@ -54,6 +54,8 @@ spring:
         # 配置默认的监控统计拦截的Filter，不配置则监控页面中的SQL无法统计
         # stat：SQL监控配置，wall：SQL防火墙配置，slf4j：Druid日志配置
         filters: stat,wall,slf4j
+        wall:
+          db-type: mysql # 为兼容 druid 和 sharding-jdbc
         # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
         connection-properties:
           druid.stat.mergeSql: true

@@ -10,7 +10,8 @@ props:
 # 数据源配置
 dataSources:
   demo:
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    dataSourceClassName: com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
     jdbcUrl: jdbc:mysql://192.168.0.110:61307/demo?characterEncoding=UTF-8&useUnicode=true&useSSL=false&serverTimezone=Asia/Shanghai
     username: root
     password: 123456
