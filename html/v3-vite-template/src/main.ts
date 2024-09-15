@@ -1,5 +1,12 @@
 import { createApp } from 'vue'
-import './style.css'
-import App from './App.vue'
+import '@/style.css'
+import App from '@/App.vue'
 
-createApp(App).mount('#app')
+// load
+import { loadDirectives } from "@/directives"
+
+const app = createApp(App)
+
+loadDirectives(app)
+
+app.mount("#app")
