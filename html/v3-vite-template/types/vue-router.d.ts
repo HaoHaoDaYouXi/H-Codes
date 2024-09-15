@@ -9,7 +9,7 @@ declare module "vue-router" {
      */
     title?: string
     /**
-     * 设置该路由的图标，直接使用 Element Plus 的 Icon
+     * 设置该路由的图标 Icon
      */
     icon?: string
     /**
