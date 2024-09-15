@@ -19,7 +19,7 @@
     "vue": "3.5.4",
     "vue-router": "4.4.3",
     "vxe-table": "4.6.18",
-    "vxe-table-plugin-element-plus": "1.0.2",
+    "vxe-table-plugin-element": "4.0.4",
     "pinia": "2.2.2",
     "axios": "1.7.7",
     "element-plus": "2.8.2",
