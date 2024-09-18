@@ -18,6 +18,7 @@
   "dependencies": {
     "vue": "3.5.4",
     "vue-router": "4.4.3",
+    "vue-i18n": "10.0.1",
     "vxe-table": "4.6.18",
     "vxe-table-plugin-element": "4.0.4",
     "pinia": "2.2.2",
@@ -44,6 +45,7 @@
     "prettier": "3.3.3",
     "typescript": "5.5.4",
     "unocss": "0.62.2",
+    "sass": "1.77.8",
     "vite": "5.4.2",
     "vite-plugin-svg-icons": "2.0.1",
     "vite-svg-loader": "5.1.0",
