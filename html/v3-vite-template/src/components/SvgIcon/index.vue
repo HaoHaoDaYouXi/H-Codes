@@ -1,3 +1,10 @@
+<!-- svg-icon 组件 -->
+<template>
+  <svg class="svg-icon" aria-hidden="true">
+    <use :href="symbolId" />
+  </svg>
+</template>
+
 <script lang="ts" setup>
 import { computed } from "vue"
 
@@ -12,12 +19,6 @@ const props = withDefaults(defineProps<Props>(), {
 
 const symbolId = computed(() => `#${props.prefix}-${props.name}`)
 </script>
-
-<template>
-  <svg class="svg-icon" aria-hidden="true">
-    <use :href="symbolId" />
-  </svg>
-</template>
 
 <style lang="scss" scoped>
 .svg-icon {
