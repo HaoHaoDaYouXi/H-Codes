@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.haohaodayouxi</groupId>
+        <artifactId>lib-cloud</artifactId>
+        <version>1.0.0-21-SNAPSHOT</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>com.haohaodayouxi.cloud</groupId>
+    <artifactId>cloud-service</artifactId>
+    <version>1.0.0-21-SNAPSHOT</version>
+    <description>接口服务</description>
+
+    <properties>
+        <lib-db.version>1.0.0-21-SNAPSHOT</lib-db.version>
+        <lib-boot.version>1.0.0-21-SNAPSHOT</lib-boot.version>
+        <common-core.version>1.0.0-21-SNAPSHOT</common-core.version>
+        <common-log.version>1.0.0-21-SNAPSHOT</common-log.version>
+        <common-redis.version>1.0.0-21-SNAPSHOT</common-redis.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.haohaodayouxi</groupId>
+            <artifactId>lib-db</artifactId>
+            <version>${lib-db.version}</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>com.haohaodayouxi</groupId>
+            <artifactId>lib-boot</artifactId>
+            <version>${lib-boot.version}</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>com.haohaodayouxi</groupId>
+            <artifactId>common-core</artifactId>
+            <version>${common-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.haohaodayouxi</groupId>
+            <artifactId>common-log</artifactId>
+            <version>${common-log.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.haohaodayouxi</groupId>
+            <artifactId>common-redis</artifactId>
+            <version>${common-redis.version}</version>
+        </dependency>
+
+        <!--接口服务Start......-->
+
+
+        <!--接口服务End......-->
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
