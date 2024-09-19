@@ -10,17 +10,15 @@
         <relativePath/>
     </parent>
 
-    <artifactId>java</artifactId>
+    <groupId>com.haohaodayouxi.cloud</groupId>
+    <artifactId>cloud-parent</artifactId>
     <version>1.0.0-21-SNAPSHOT</version>
     <packaging>pom</packaging>
+    <description>微服务模板</description>
 
     <modules>
-        <module>springboot-template</module>
-        <module>security</module>
-        <module>springboot-netty</module>
-        <module>springboot-freemarker</module>
-        <module>springboot-sharding-jdbc</module>
-        <module>cloud</module>
+        <module>facade</module>
+        <module>service</module>
     </modules>
 
 </project>

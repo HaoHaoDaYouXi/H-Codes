@@ -10,17 +10,12 @@
         <relativePath/>
     </parent>
 
-    <artifactId>java</artifactId>
+    <artifactId>cloud</artifactId>
     <version>1.0.0-21-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
-        <module>springboot-template</module>
-        <module>security</module>
-        <module>springboot-netty</module>
-        <module>springboot-freemarker</module>
-        <module>springboot-sharding-jdbc</module>
-        <module>cloud</module>
+        <module>cloud-template</module>
     </modules>
 
 </project>
