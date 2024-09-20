@@ -21,6 +21,10 @@
         <common-core.version>1.0.0-21-SNAPSHOT</common-core.version>
         <common-log.version>1.0.0-21-SNAPSHOT</common-log.version>
         <common-redis.version>1.0.0-21-SNAPSHOT</common-redis.version>
+        <cloud-server-filter.version>1.0.0-21-SNAPSHOT</cloud-server-filter.version>
+
+        <cloud-dubbo-service.version>1.0.0-21-SNAPSHOT</cloud-dubbo-service.version>
+        <cloud-feign-service.version>1.0.0-21-SNAPSHOT</cloud-feign-service.version>
     </properties>
 
     <dependencies>
@@ -51,8 +55,23 @@
             <artifactId>common-redis</artifactId>
             <version>${common-redis.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.haohaodayouxi</groupId>
+            <artifactId>cloud-server-filter</artifactId>
+            <version>${cloud-server-filter.version}</version>
+        </dependency>
 
         <!--接口服务Start......-->
+        <dependency>
+            <groupId>com.haohaodayouxi.cloud</groupId>
+            <artifactId>cloud-dubbo-service</artifactId>
+            <version>${cloud-dubbo-service.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.haohaodayouxi.cloud</groupId>
+            <artifactId>cloud-feign-service</artifactId>
+            <version>${cloud-feign-service.version}</version>
+        </dependency>
 
 
         <!--接口服务End......-->

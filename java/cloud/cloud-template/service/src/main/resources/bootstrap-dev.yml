@@ -1,4 +1,17 @@
 spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.0.110:8848
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        # 命名中心 可以不配置使用默认的public 特殊项目特殊配置
+        #        namespace:
+        # 分组，建议按照服务名命名
+        group: ${spring.application.name}
+        # dataId 的完整格式如下：${prefix}-${spring.profiles.active}.${file-extension}
+        # 使用的 Nacos 配置集的 dataId 的文件拓展名，同时也是 Nacos 配置集的配置格式，默认为 properties
+        file-extension: yaml
   datasource:
     druid:
       # 配置 stat-filter
@@ -73,6 +86,28 @@ spring:
       password: 123456
       database: 0
       timeout: 1200
+
+dubbo:
+  application:
+    name: ${spring.application.name}-dubbo-service
+  consumer:
+    check: false  # 跳过启动检查，当dubbo服务未启动时，项目也可正常启动
+    timeout: 50000
+  provider:
+    filter: -exception # 跳过dubbo的异常处理类，放回自定义的异常
+  registries: # Dubbo 多服务注册中心配置
+    nacos:
+      default: true # 默认注册中心
+      address: nacos://${spring.cloud.nacos.discovery.server-addr}
+      register-mode: instance # 启用应用级服务发现，可选值 interface(接口)、instance(应用)、all(全部)
+      parameters:
+        register-consumer-url: true # 消费者是否注册到注册中心
+  scan:
+    base-packages: com.haohaodayouxi  # 指定 Dubbo 服务实现类的扫描基准包
+  protocols:  # Dubbo服务暴露的协议配置，其中子属性name为协议名称，port为协议端口（-1 表示自增端口，从 20880 开始）
+    dubbo:
+      name: dubbo
+      port: -1
 
 logging:
   level:

@@ -11,7 +11,7 @@ spring:
   profiles:
     active: dev
   application:
-    name: demo
+    name: cloud
   # 资源信息
   messages:
     # 国际化资源文件路径，多个用","分隔

@@ -1,5 +1,7 @@
 package com.haohaodayouxi.cloud.controller;
 
+import com.haohaodayouxi.cloud.dubbo_service.DemoDubboService;
+import com.haohaodayouxi.cloud.feign_service.service.DemoFeignService;
 import com.haohaodayouxi.cloud.model.db.DemoId;
 import com.haohaodayouxi.cloud.service.DemoService;
 import com.haohaodayouxi.cloud.utils.I18nMessageUtils;
@@ -10,6 +12,7 @@ import com.haohaodayouxi.common.core.model.vo.page.PageBaseVO;
 import com.haohaodayouxi.common.log.annotation.AutoLog;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,11 +37,28 @@ public class HealthController {
     @Resource
     private DemoService demoService;
 
+    @Resource
+    private DemoFeignService demoFeignService;
+    @DubboReference
+    private DemoDubboService demoDubboService;
+
 
     @GetMapping("/h-open/check")
     public String healthCheck() {
         log.info("healthCheck");
         return String.format(applicationName + " is health! %s", LocalDateTime.now());
+    }
+
+    @GetMapping("/demoFeignService")
+    public String demoFeignService() {
+        log.info("demoFeignService");
+        return demoFeignService.check();
+    }
+
+    @GetMapping("/demoDubboService")
+    public String demoDubboService() {
+        log.info("demoDubboService");
+        return demoDubboService.get();
     }
 
     @AutoLog(value = "测试日志切面", keepLogServiceName = "TmpKeepLogServiceImpl")
