@@ -1,6 +1,8 @@
 import { createApp } from 'vue'
 import '@/styles/style.css'
 import App from '@/App.vue'
+import store from "@/store"
+import router from "@/router"
 
 // load
 import { loadPlugins } from "@/plugins"
@@ -23,4 +25,7 @@ loadSvg(app)
 // 加载自定义指令
 loadDirectives(app)
 
-app.mount("#app")
+app.use(store).use(router)
+router.isReady().then(() => {
+    app.mount("#app")
+})

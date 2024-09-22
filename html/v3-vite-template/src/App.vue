@@ -1,30 +1,42 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <router-view />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+<script lang="ts" setup>
+
+</script>
+
+<style lang="scss">
+* {
+  margin: 0;
+  padding: 0;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+@media screen and (max-width: 768px) {
+  .el-message {
+    min-width: 300px !important;
+  }
+  .el-message-box {
+    width: 300px !important;
+  }
+  .el-dialog__wrapper .el-dialog {
+    width: 95% !important;
+
+    .el-dialog__body {
+      padding: 10px 20px !important;
+    }
+  }
+  .el-date-range-picker {
+    left: 0 !important;
+  }
+
+  .el-form-item__label {
+    display: block;
+    width: 100% !important;
+    text-align: left;
+  }
+  .el-form-item__content {
+    margin-left: 0 !important;
+  }
 }
 </style>
