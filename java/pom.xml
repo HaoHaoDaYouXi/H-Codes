@@ -20,6 +20,7 @@
         <module>springboot-netty</module>
         <module>springboot-freemarker</module>
         <module>springboot-sharding-jdbc</module>
+        <module>springboot-mqtt</module>
         <module>cloud</module>
     </modules>
 

@@ -10,7 +10,7 @@ main分支JDK版本为21，main_8分支JDK版本为8
 - [安全框架](security/README.md)
 - [springboot-netty](springboot-netty/README.md)
 - [springboot+freemarker](springboot-freemarker/README.md)
-- [MQTT](../wait.md)
+- [MQTT](springboot-mqtt/README.md)
 - [camunda流程引擎](../wait.md)
 - [摄像头聚合管控](../wait.md)
 
