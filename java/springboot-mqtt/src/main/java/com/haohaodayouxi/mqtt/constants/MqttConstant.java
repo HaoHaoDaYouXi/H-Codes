@@ -8,8 +8,8 @@ import java.util.*;
 /**
  * MqttConstant
  *
- * @author lenovo
- * @date 2022/5/23
+ * @author TONE
+ * @date 2024/9/25
  */
 public class MqttConstant {
     /**

@@ -9,7 +9,8 @@ import org.springframework.stereotype.Component;
  * 服务降级处理(熔断)，可以不写熔断
  * 熔断是多服务业务处理中断场景使用，如全部重置或补偿处理等业务情况
  *
- * @author lenovo
+ * @author TONE
+ * @date 2024/9/20
  */
 @Slf4j
 @Component

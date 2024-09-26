@@ -20,8 +20,8 @@ import java.util.stream.Collectors;
 /**
  * ClientMQTTConfig
  *
- * @author lenovo
- * @date 2022/5/27
+ * @author TONE
+ * @date 2024/9/25
  */
 @Slf4j
 @Configuration

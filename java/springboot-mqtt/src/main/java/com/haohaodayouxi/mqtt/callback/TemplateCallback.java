@@ -21,7 +21,8 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
  * 接收到已经发布的 QoS 1 或 QoS 2 消息的传递令牌时调用。
  * 由 MqttClient.connect 激活此回调。
  *
- * @author lenovo
+ * @author TONE
+ * @date 2024/9/25
  */
 @Slf4j
 public class TemplateCallback implements MqttCallbackExtended {

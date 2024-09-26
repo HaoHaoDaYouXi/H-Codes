@@ -12,8 +12,8 @@ import java.util.Arrays;
 /**
  * MqttUtil
  *
- * @author lenovo
- * @date 2022/5/24
+ * @author TONE
+ * @date 2024/9/25
  */
 @Slf4j
 public class MqttUtil {

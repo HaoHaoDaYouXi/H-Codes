@@ -7,8 +7,8 @@ import jakarta.validation.constraints.NotEmpty;
 /**
  * RocketMqSendService
  *
- * @author lenovo
- * @date 2022/3/18
+ * @author TONE
+ * @date 2024/9/25
  */
 public interface MqttService {
 

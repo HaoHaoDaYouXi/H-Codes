@@ -7,8 +7,8 @@ import org.springframework.context.annotation.Configuration;
 /**
  * MqttProperties
  *
- * @author lenovo
- * @date 2022/5/24
+ * @author TONE
+ * @date 2024/9/25
  */
 @Data
 @Configuration
