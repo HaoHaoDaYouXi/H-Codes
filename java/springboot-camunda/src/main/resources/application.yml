@@ -51,3 +51,8 @@ pagehelper:
   supportMethodsArguments: true
   # 从对象中根据属性名取值，可以配置 pageNum，pageSize，count，pageSizeZero，reasonable
   params: count=countSql
+
+# camunda
+camunda.bpm:
+  historyLevel: none
+  idGenerator: db
