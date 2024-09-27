@@ -1,0 +1,53 @@
+# 若接入 nacos 配置中心，所有运行环境都一样的配置可以放置application.yml，其余配置根据环境文件放
+server:
+  port: 10000
+  servlet:
+    context-path: /camunda
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+spring:
+  profiles:
+    active: dev
+  application:
+    name: demo
+  # 资源信息
+  messages:
+    # 国际化资源文件路径，多个用","分隔
+    basename: i18n/messages
+    encoding: UTF-8
+  main:
+    allow-bean-definition-overriding: true
+    allow-circular-references: true
+  jackson:
+    date-format: "yyyy-MM-dd HH:mm:ss"
+    time-zone: "Asia/Shanghai"
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+
+mybatis-plus:
+  configuration:
+    # 是否开启自动驼峰命名规则映射:从数据库列名到Java属性驼峰命名的类似映射
+    map-underscore-to-camel-case: true
+    # 如果查询结果中包含空值的列，则 MyBatis 在映射的时候，不会映射这个字段
+    # 允许在resultType="map"时映射null值
+    call-setters-on-nulls: true
+    # 这个配置会将执行的sql打印出来，在开发或测试的时候可以用(包括执行结果)
+    # log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  # xml扫描，多个目录用逗号或者分号分隔(告诉 Mapper 所对应的 XML 文件位置)
+  mapper-locations: classpath*:mapper/**Mapper.xml,classpath*:mapper/*/*Mapper.xml
+
+pagehelper:
+  # 自动获取数据库类型，选择合适的分页方式
+  auto-dialect: true
+  # 默认值为 false。设置为 true 时，允许在运行时根据多数据源自动识别对应方言的分页
+  auto-runtime-dialect: true
+  # sql 方言
+  helperDialect: mysql
+  # 如果开启优化，在分页页码结果没有数据的时候,会显示有数据的页码数据
+  reasonable: false
+  # 分页插件会从查询方法的参数值中，自动根据 params 配置的字段中取值，自动分页，默认false
+  supportMethodsArguments: true
+  # 从对象中根据属性名取值，可以配置 pageNum，pageSize，count，pageSizeZero，reasonable
+  params: count=countSql
