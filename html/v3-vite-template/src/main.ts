@@ -8,7 +8,7 @@ import router from "@/router"
 import { loadPlugins } from "@/plugins"
 import { loadSvg } from "@/icons"
 import { loadDirectives } from "@/directives"
-import formRules from "@/utils/rules";
+import commonFormRules from "@/utils/rules";
 
 // css
 import "uno.css"
@@ -19,7 +19,7 @@ import "vxe-table-plugin-element/dist/style.css"
 
 const app = createApp(App)
 
-app.config.globalProperties.formRules = formRules;
+app.config.globalProperties.commonFormRules = commonFormRules;
 
 // 加载插件
 loadPlugins(app)
