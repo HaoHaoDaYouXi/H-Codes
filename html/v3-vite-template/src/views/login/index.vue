@@ -47,7 +47,7 @@
 
 <script lang="ts" setup>
 import { reactive, ref } from "vue"
-import { type FormInstance, type FormRules } from "element-plus"
+import { type FormInstance } from "element-plus"
 import { User, Lock } from "@element-plus/icons-vue"
 
 const VITE_APP_TITLE = import.meta.env.VITE_APP_TITLE
