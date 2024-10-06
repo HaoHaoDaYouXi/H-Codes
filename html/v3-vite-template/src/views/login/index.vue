@@ -9,6 +9,7 @@
         <el-card shadow="never" class="login-form">
           <div class="login-title">
             <p>{{ VITE_APP_TITLE }}</p>
+            <p>{{ VITE_APP_VERSION }}</p>
           </div>
           <div class="login-header">
             <div class="title">账号登录</div>
@@ -51,6 +52,7 @@ import { type FormInstance } from "element-plus"
 import { User, Lock } from "@element-plus/icons-vue"
 
 const VITE_APP_TITLE = import.meta.env.VITE_APP_TITLE
+const VITE_APP_VERSION = import.meta.env.VITE_APP_VERSION
 
 /** 登录表单元素的引用 */
 const loginFormRef = ref<FormInstance | null>(null)
@@ -119,16 +121,14 @@ const handleLogin = () => {
         width: 446px;
         min-height: 530px;
         border-radius: 6px;
-
-        .el-card__body {
-          padding: 0;
-        }
+        padding: 0;
+        --el-card-padding: 0;
       }
     }
 
     .login-form {
       .login-title {
-        padding: 30px 0 14px;
+        padding: 30px 0 20px;
         text-align: center;
         background: #F6FAFF;
 
@@ -161,11 +161,6 @@ const handleLogin = () => {
           font-size: 22px;
           color: #2F2F2F;
         }
-
-        .register {
-          line-height: 30px;
-          cursor: pointer;
-        }
       }
 
       .login-header-bottom {
@@ -181,37 +176,27 @@ const handleLogin = () => {
       .el-form {
         padding: 0 48px;
 
-        .el-input--small {
+        .el-input--prefix {
           font-size: 16px;
           font-family: PingFang SC-Medium, PingFang SC;
           font-weight: 400;
           color: #C0C4CC;
-        }
-
-        .el-input--small .el-input__inner {
-          height: 48px;
           line-height: 48px;
+          --el-input-height: 48px;
         }
 
-        .el-input__inner:hover,
-        .el-input__inner:focus {
-          border-color: #2975F9;
-        }
-
-        .el-button--small {
+        .el-button {
           padding: 17px 15px;
           font-size: 20px;
           font-family: PingFang SC-Medium, PingFang SC;
           font-weight: 400;
-        }
-
-        .el-button--primary {
           background-color: #2975f9;
           border-color: #2975f9;
         }
 
         .button-login {
           width: 100%;
+          height: 55px;
           margin-top: 15px;
         }
       }
