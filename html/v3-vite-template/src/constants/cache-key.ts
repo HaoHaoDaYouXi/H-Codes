@@ -1,5 +1,5 @@
-
-const SYSTEM_NAME = import.meta.env.VITE_APP_TITLE
+/** 缓存前缀 */
+const SYSTEM_NAME = "v3-vite-template"
 
 /** 缓存数据时用到的 Key */
 class CacheKey {
