@@ -1,10 +1,10 @@
 export interface LoginReq {
   /** 账号 */
-  username: "admin"
+  user_name: string
   /** 密码 */
-  password: "123456"
+  user_password: string
 }
 
 export type LoginRes = ApiRes<{ token: string }>
 
-export type UserInfoRes = ApiRes<{ username: string }>
+export type UserInfoRes = ApiRes<{ user_name: string }>
