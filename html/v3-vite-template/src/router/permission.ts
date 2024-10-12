@@ -30,7 +30,7 @@ router.beforeEach(async (to, _from, next) => {
   if (!userStore.booAddRoutes) {
     const routerData = await userStore.getRouterByUser()
     routerData.forEach((route) => router.addRoute(route))
-    next({ ...to, replace: true })
+    return next({ ...to, replace: true })
   }
   return next()
 })
