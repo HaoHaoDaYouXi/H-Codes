@@ -11,6 +11,20 @@ export const constantRoutes: RouteRecordRaw[] = [
     meta: {
       hidden: true
     }
+  },
+  {
+    path: "/404",
+    name: "404",
+    component: () => import("@/views/404/index.vue"),
+    meta: { hidden: true, title: "找不到此页面" }
+  },
+  {
+    path: "/:pathMatch(.*)",
+    name: "notFound",
+    redirect: "/404",
+    meta: {
+      hidden: true
+    }
   }
 ]
 

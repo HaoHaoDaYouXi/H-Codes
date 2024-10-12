@@ -26,11 +26,17 @@ router.beforeEach(async (to, _from, next) => {
   if (!userStore.user_name) {
     await userStore.getUserInfo()
   }
+
   // 路由信息是否获取并添加过
   if (!userStore.booAddRoutes) {
     const routerData = await userStore.getRouterByUser()
     routerData.forEach((route) => router.addRoute(route))
-    return next({ ...to, replace: true })
+    if (to.path == "/404" && to.redirectedFrom) {
+      return next({ path: to.redirectedFrom.fullPath, replace: true })
+    } else {
+      return next({ ...to, replace: true })
+    }
+    // next({ ...to, replace: true })
   }
   return next()
 })
