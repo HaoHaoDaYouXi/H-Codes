@@ -15,6 +15,7 @@
   top: 38%;
   transform: translate(-50%, -50%);
   z-index: 1;
+  text-align: left;
 }
 
 .title {
