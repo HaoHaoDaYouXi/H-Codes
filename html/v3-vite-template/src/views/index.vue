@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import '@/styles/style.css'
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import "@/styles/style.css"
+import HelloWorld from "@/components/HelloWorld.vue"
 </script>
 
 <template>
