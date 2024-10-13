@@ -36,7 +36,7 @@ router.beforeEach(async (to, _from, next) => {
     } else {
       return next({ ...to, replace: true })
     }
-    // next({ ...to, replace: true })
+    // return next({ ...to, replace: true })
   }
   return next()
 })
