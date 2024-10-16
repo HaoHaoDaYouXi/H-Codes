@@ -1,9 +1,7 @@
 import { type RouteRecordRaw, createRouter } from "vue-router"
 import { history } from "./util"
 
-/**
- * 常驻路由
- */
+/** 常驻路由 */
 export const constantRoutes: RouteRecordRaw[] = [
   {
     path: "/login",
