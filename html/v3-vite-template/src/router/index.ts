@@ -1,5 +1,6 @@
 import { type RouteRecordRaw, createRouter } from "vue-router"
 import { history } from "./util"
+import Home from "@/router/modules/home"
 
 /** 常驻路由 */
 export const constantRoutes: RouteRecordRaw[] = [
@@ -25,6 +26,11 @@ export const constantRoutes: RouteRecordRaw[] = [
     }
   }
 ]
+
+/** 路由组件 */
+export const componentsMap: { [key: string]: () => Promise<any> } = {
+  ...Home
+}
 
 const router = createRouter({
   history,
