@@ -5,13 +5,10 @@ import { getToken, removeToken, setToken } from "@/utils/cache/cookies"
 import { resetRouter } from "@/router"
 import { loginApi, getUserInfoApi } from "@/api/login"
 import { type LoginReq } from "@/api/login/types/login"
-import { type RouteRecordRaw } from "vue-router"
 
 export const useUserStore = defineStore("user", () => {
   const token = ref<string>(getToken() || "")
   const user_name = ref<string>("")
-  const booAddRoutes = ref<boolean>()
-  const addRoutes = ref<RouteRecordRaw[]>()
 
   /** 登录 */
   const login = async ({ user_name, user_password }: LoginReq) => {
@@ -27,22 +24,6 @@ export const useUserStore = defineStore("user", () => {
     user_name.value = "admin"
   }
 
-  /** 获取路由 */
-  const getRouterByUser = async () => {
-    // await getRouterByUser() 调用接口获取路由信息
-    addRoutes.value = [
-      {
-        path: "/",
-        component: () => import("@/views/index.vue"),
-        meta: {
-          hidden: true
-        }
-      }
-    ]
-    booAddRoutes.value = true
-    return addRoutes.value
-  }
-
   /** 登出 */
   const logout = () => {
     removeToken()
@@ -50,7 +31,7 @@ export const useUserStore = defineStore("user", () => {
     resetRouter()
   }
 
-  return { token, user_name, booAddRoutes, login, getUserInfo, getRouterByUser, logout }
+  return { token, user_name, login, getUserInfo, logout }
 })
 
 /** 在 setup 外使用 */
