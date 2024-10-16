@@ -3,6 +3,7 @@ import { setRouteChange } from "@/hooks/useRouteListener"
 import { getToken } from "@/utils/cache/cookies"
 import isWhiteList from "@/config/white-list"
 import { useUserStoreHook } from "@/store/modules/user"
+import { usePermissionStoreHook } from "@/store/modules/permission"
 import NProgress from "nprogress"
 import "nprogress/nprogress.css"
 
