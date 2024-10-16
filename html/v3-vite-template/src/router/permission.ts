@@ -30,9 +30,10 @@ router.beforeEach(async (to, _from, next) => {
 
   const permissionStore = usePermissionStoreHook()
   // 路由信息是否获取并添加过
-  if (!userStore.booAddRoutes) {
-    const routerData = await userStore.getRouterByUser()
-    routerData.forEach((route) => router.addRoute(route))
+  if (!permissionStore.booAddRoutes) {
+    await permissionStore.getRouterByUser()
+    permissionStore.addRouter.forEach((route) => router.addRoute(route))
+    permissionStore.booAddRoutes = true
     if (to.path == "/404" && to.redirectedFrom) {
       return next({ path: to.redirectedFrom.fullPath, replace: true })
     } else {
