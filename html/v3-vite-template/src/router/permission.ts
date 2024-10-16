@@ -28,6 +28,7 @@ router.beforeEach(async (to, _from, next) => {
     await userStore.getUserInfo()
   }
 
+  const permissionStore = usePermissionStoreHook()
   // 路由信息是否获取并添加过
   if (!userStore.booAddRoutes) {
     const routerData = await userStore.getRouterByUser()
