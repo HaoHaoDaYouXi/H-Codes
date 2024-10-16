@@ -2,7 +2,9 @@
 import store from "@/store"
 import { defineStore } from "pinia"
 import { type RouteRecordRaw } from "vue-router"
-import { constantRoutes } from "@/router"
+import { componentsMap, constantRoutes } from "@/router"
+import { getRouterByUserApi } from "@/api/permission"
+import { PermissionData } from "@/api/permission/types/permission"
 
 export const usePermissionStore = defineStore("permission", () => {
   /** 可访问的路由 */
