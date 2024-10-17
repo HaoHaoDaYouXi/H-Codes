@@ -1,5 +1,5 @@
-import { createApp } from 'vue'
-import App from '@/App.vue'
+import { createApp } from "vue"
+import App from "@/App.vue"
 import store from "@/store"
 import router from "@/router"
 import "@/router/permission"
@@ -8,7 +8,7 @@ import "@/router/permission"
 import { loadPlugins } from "@/plugins"
 import { loadSvg } from "@/icons"
 import { loadDirectives } from "@/directives"
-import commonFormRules from "@/utils/rules";
+import commonFormRules from "@/utils/rules"
 
 // css
 import "uno.css"
@@ -17,7 +17,7 @@ import "element-plus/theme-chalk/dark/css-vars.css"
 import "vxe-table/lib/style.css"
 import "vxe-table-plugin-element/dist/style.css"
 
-import '@/styles/index.scss'
+import "@/styles/index.scss"
 
 const app = createApp(App)
 
@@ -32,5 +32,5 @@ loadDirectives(app)
 
 app.use(store).use(router)
 router.isReady().then(() => {
-    app.mount("#app")
+  app.mount("#app")
 })
