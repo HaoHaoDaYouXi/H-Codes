@@ -11,7 +11,7 @@ export const permission: Directive = {
       const hasPermission = true // permissions.includes(value) 判断当前权限是否在已有权限中
       // hasPermission || (el.style.display = "none") // 隐藏
       hasPermission || el.parentNode?.removeChild(el) // 销毁
-    }else {
+    } else {
       console.log("没有权限数据")
       el.parentNode?.removeChild(el) // 销毁
     }
