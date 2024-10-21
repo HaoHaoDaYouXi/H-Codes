@@ -11,7 +11,7 @@ import { type UserInfoData } from "@/api/user/types/user"
 export const useUserStore = defineStore("user", () => {
   const token = ref<string>(getToken() || "")
   const user_info: UserInfoData = reactive({
-    userName: "test",
+    userName: "",
     avatar: "@/assets/vue.svg"
   })
 
