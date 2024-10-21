@@ -1,14 +1,19 @@
-﻿import { ref } from "vue"
+﻿import { reactive, ref } from "vue"
 import store from "@/store"
 import { defineStore } from "pinia"
 import { getToken, removeToken, setToken } from "@/utils/cache/cookies"
 import { resetRouter } from "@/router"
-import { loginApi, getUserInfoApi } from "@/api/login"
+import { loginApi } from "@/api/login"
 import { type LoginReq } from "@/api/login/types/login"
+import { getUserInfoApi } from "@/api/user"
+import { type UserInfoData } from "@/api/user/types/user"
 
 export const useUserStore = defineStore("user", () => {
   const token = ref<string>(getToken() || "")
-  const user_name = ref<string>("")
+  const user_info: UserInfoData = reactive({
+    userName: "test",
+    avatar: "@/assets/vue.svg"
+  })
 
   /** 登录 */
   const login = async ({ user_name, user_password }: LoginReq) => {
@@ -21,7 +26,7 @@ export const useUserStore = defineStore("user", () => {
   /** 获取用户详情 */
   const getUserInfo = async () => {
     // await getUserInfoApi() 调用接口获取用户信息
-    user_name.value = "admin"
+    user_info.userName = "admin"
   }
 
   /** 登出 */
@@ -31,7 +36,7 @@ export const useUserStore = defineStore("user", () => {
     resetRouter()
   }
 
-  return { token, user_name, login, getUserInfo, logout }
+  return { token, user_info, login, getUserInfo, logout }
 })
 
 /** 在 setup 外使用 */
