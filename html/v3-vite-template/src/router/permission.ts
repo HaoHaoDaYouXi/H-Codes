@@ -24,7 +24,7 @@ router.beforeEach(async (to, _from, next) => {
 
   const userStore = useUserStoreHook()
   // 用户信息是否存在
-  if (!userStore.user_name) {
+  if (!userStore.user_info.userName) {
     await userStore.getUserInfo()
   }
 
