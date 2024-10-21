@@ -9,11 +9,3 @@ export function loginApi(data: Login.LoginReq) {
     data
   })
 }
-
-/** 获取用户详情 */
-export function getUserInfoApi() {
-  return request<Login.UserInfoRes>({
-    url: "user/getInfo",
-    method: "get"
-  })
-}

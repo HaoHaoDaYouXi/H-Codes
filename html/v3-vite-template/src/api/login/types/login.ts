@@ -6,5 +6,3 @@ export interface LoginReq {
 }
 
 export type LoginRes = ApiRes<{ token: string }>
-
-export type UserInfoRes = ApiRes<{ user_name: string }>
