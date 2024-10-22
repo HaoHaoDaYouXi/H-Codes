@@ -12,7 +12,9 @@ export const useUserStore = defineStore("user", () => {
   const token = ref<string>(getToken() || "")
   const user_info: UserInfoData = reactive({
     userName: "",
-    avatar: "@/assets/vue.svg"
+    avatar: "",
+    roleId: 0,
+    roleName: ""
   })
 
   /** 登录 */
@@ -27,6 +29,9 @@ export const useUserStore = defineStore("user", () => {
   const getUserInfo = async () => {
     // await getUserInfoApi() 调用接口获取用户信息
     user_info.userName = "admin"
+    user_info.avatar = "@/assets/vue.svg"
+    user_info.roleId = 1
+    user_info.roleName = "系统管理员"
   }
 
   /** 登出 */
