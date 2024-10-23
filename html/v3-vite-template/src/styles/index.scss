@@ -3,6 +3,7 @@
 @tailwind utilities;
 @import "./mixin.scss";
 @import "./variables.scss";
+@import './public.scss';
 
 html {
   height: 100%;
