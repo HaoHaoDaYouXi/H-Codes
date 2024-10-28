@@ -2,7 +2,7 @@
   <div class="content404">
     <p class="title">页面不存在</p>
     <p class="explain">请确认您输入的跳转地址是否正确，或者单击下方的按钮返回主页。</p>
-    <router-link class="el-icon-back" tag="a" to="/" replace>
+    <router-link class="el-icon-back" to="/" replace>
       <span>返回首页</span>
     </router-link>
   </div>

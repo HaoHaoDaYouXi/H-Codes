@@ -27,7 +27,7 @@ const props = withDefaults(defineProps<Props>(), {
 </script>
 
 <style lang="scss" scoped>
-@import "@/styles/variables";
+@import "@/styles/variables.module.scss";
 
 .sidebarLogoFade-enter-active {
   transition: opacity 1.5s;
