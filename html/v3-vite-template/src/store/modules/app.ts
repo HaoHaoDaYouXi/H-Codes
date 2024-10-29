@@ -23,6 +23,8 @@ export const useAppStore = defineStore("app", () => {
   })
   /** 设备类型 */
   const device = ref<DeviceEnum>(DeviceEnum.Desktop)
+  /** 浏览器窗口缩放操作计数器 */
+  const resizeCount = ref(0)
 
   /** 监听侧边栏 opened 状态 */
   watch(
@@ -45,5 +47,5 @@ export const useAppStore = defineStore("app", () => {
     device.value = value
   }
 
-  return { device, sidebar, toggleSidebar, closeSidebar, toggleDevice }
+  return { device, sidebar, resizeCount, toggleSidebar, closeSidebar, toggleDevice }
 })
