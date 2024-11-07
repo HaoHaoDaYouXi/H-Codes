@@ -68,8 +68,10 @@ module.exports = {
     "prettier/prettier": [
       "error",
       {
-        semi: false,
-        endOfLine: "auto"
+        "htmlWhitespaceSensitivity": "ignore",
+        "trailingComma": "none",
+        "semi": false,
+        "endOfLine": "auto"
       }
     ]
   }
