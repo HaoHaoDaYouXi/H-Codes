@@ -21,7 +21,7 @@ import "@/styles/index.scss"
 
 const app = createApp(App)
 
-app.config.globalProperties.commonFormRules = commonFormRules;
+app.config.globalProperties.commonFormRules = commonFormRules
 
 // 加载插件
 loadPlugins(app)
