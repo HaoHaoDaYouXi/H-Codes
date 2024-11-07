@@ -1,0 +1,340 @@
+.top-nav {
+  width: 100%;
+  background: linear-gradient(-90deg, #1357EB 0%, #2D7BFC 99%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2001;
+  overflow: hidden;
+
+  &-logo {
+    display: inline-block;
+    padding: 0 14px;
+    font-size: 0;
+    vertical-align: top;
+
+    img {
+      display: block;
+      width: 180px;
+      height: 41px;
+      object-fit: contain;
+      vertical-align: middle;
+    }
+  }
+
+  .el-menu-box {
+    display: inline-block;
+    // 334px: 左侧图标宽度 262 + 右侧按钮按钮区宽度 323  + 1px误差
+    width: calc(100% - 586px);
+    height: $topBarHeight;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .el-menu {
+    display: inline-block;
+    border: none !important;
+    background-color: $topBarMenuHover;
+    margin-top: 14px;
+
+    .nav-item {
+      display: inline-block;
+      vertical-align: middle;
+      padding-right: 8px;
+
+      .el-menu-item {
+        display: flex;
+        align-items: center;
+        color: #CAE5FF;
+        height: 40px;
+        border: 1px solid rgba(255, 255, 255, 0);
+        padding: 0 8px;
+
+        &.is-active {
+          background: rgba(255, 255, 255, 0.15);
+          border-radius: 4px;
+          border-color: rgba(255, 255, 255, 0.2) !important;
+
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.15) !important;
+          }
+
+          &:focus {
+            background-color: rgba(255, 255, 255, 0.15) !important;
+          }
+        }
+
+        i {
+          font-size: 16px;
+          color: inherit;
+
+          &.iconfont {
+            margin-right: 7px;
+          }
+        }
+
+        span {
+          line-height: inherit;
+        }
+
+        &:hover {
+          background-color: $topBarMenuHover !important;
+        }
+
+        &:focus {
+          background-color: $topBarMenuHover !important;
+          // color: $subMenuActiveText !important;
+        }
+      }
+    }
+  }
+
+  .right-menu {
+    display: inline-block;
+    padding-left: 28px;
+
+    .base-dw {
+      width: 24px;
+    }
+
+    .jw-el-badge {
+      color: #CAE5FF;
+
+      ::v-deep .el-button--text {
+        padding: 0;
+        color: inherit;
+        font-size: 16px;
+      }
+    }
+
+    .btn-dashboard {
+      color: #CAE5FF;
+
+      ::v-deep span {
+        margin-left: 4px;
+      }
+    }
+  }
+
+  .avatar-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+    color: #FFF;
+    cursor: pointer;
+
+    &::before {
+      content: '';
+      margin-right: 18px;
+      height: 36px;
+      border-left: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .user-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 14px;
+      margin-right: 8px;
+      object-fit: cover;
+    }
+
+    span {
+      margin-right: 4px;
+      white-space: nowrap;
+    }
+  }
+
+  .iconfont.icon-jiantou_zuoyouqiehuan {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+  }
+}
+
+.top-nav-user-box {
+  margin-bottom: 8px;
+  background-color: #eaf1fe;
+}
+
+.top-nav-user-name {
+  width: 100%;
+  padding-top: 12px;
+  line-height: 1.25;
+  font-size: 16px;
+  font-family: PingFang SC-Bold, PingFang SC;
+  color: #2F2F2F;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.top-nav-user-roles {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 12px;
+  margin-top: 4px;
+
+  p {
+    width: calc(100% - 32px);
+    font-size: 14px;
+    font-family: PingFang SC-Medium, PingFang SC;
+    color: #7E828B;
+    line-height: 1.428571;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  i {
+    background: #5183f5;
+    border-radius: 50%;
+    color: #FFF;
+    width: 18px;
+    line-height: 18px;
+    font-size: 16px;
+    text-align: center;
+  }
+}
+
+.top-nav-role-list {
+  height: 198px;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar-track-piece {
+    background: #fff;
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #fff;
+  }
+}
+
+.top-nav-logout {
+  position: relative;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 0;
+  margin-top: 8px;
+  border-top: 1px solid #EFF2F7;
+}
+
+.top-nav-pc-project {
+  width: 68px;
+  height: 68px;
+  cursor: pointer;
+
+  &-enter {
+    display: block;
+    padding: 10px;
+    border: none;
+    border-radius: 0;
+    font-size: 18px;
+    text-align: center;
+    color: #fff;
+    background-color: transparent;
+
+    &:hover,
+    &:focus {
+      color: #FFF;
+      border-color: transparent;
+      background-color: inherit;
+    }
+  }
+}
+
+.top-nav-pc-project-list {
+  padding: 0 6px;
+  margin: 0 10px 6px;
+
+  &:nth-of-type(1) {
+    margin: 6px 10px 6px;
+  }
+}
+
+.popover-header {
+  height: 49px;
+  line-height: 49px;
+  background: #F1F4F9;
+  box-shadow: 0 1px 0 0 #E5E6EB;
+  padding-left: 13px;
+  font-weight: 400;
+  color: #2F2F2F;
+  font-size: 16px;
+}
+
+.popover-message {
+  padding: 16px 8px;
+  border-bottom: 1px solid #e5e6eb;
+  cursor: pointer;
+
+  .item-title {
+
+    display: flex;
+    align-items: center;
+
+    .item-badge {
+      width: 8px;
+      height: 8px;
+      left: 9px;
+      border-radius: 50%;
+      margin-right: 5px;
+    }
+
+    .item-text {
+      width: 92%;
+      height: 14px;
+      line-height: 14px;
+      color: #1D2129;
+      font-family: 'Microsoft YaHei-Regular, Microsoft YaHei';
+      font-weight: 400;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  .item-time {
+    margin-top: 8px;
+    padding-left: 13px;
+    color: #86909C;
+    font-size: 12px;
+    font-weight: 400;
+    font-family: 'Microsoft YaHei-Regular, Microsoft YaHei';
+  }
+}
+
+.popover-btn {
+  display: flex;
+
+  .el-button {
+    width: 50%;
+    height: 50px;
+    text-align: center;
+    box-shadow: 1px 0 0 0 #E5E6EB;
+    font-weight: 400;
+    color: #165DFF;
+    font-size: 14px;
+  }
+}
+
+.mobile {
+  .top-nav {
+    .top-nav-logo {
+      display: none;
+    }
+  }
+
+  .el-menu-box {
+    width: calc(100% - 265px);
+  }
+}

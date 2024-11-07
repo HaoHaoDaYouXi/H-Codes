@@ -4,6 +4,9 @@
 @import "./mixin.scss";
 @import "./variables.module.scss";
 @import "./public.scss";
+@import './topbar.scss';
+@import './sidebar.scss';
+@import './transition.scss';
 
 html {
   height: 100%;
