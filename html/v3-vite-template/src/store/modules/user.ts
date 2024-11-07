@@ -29,7 +29,7 @@ export const useUserStore = defineStore("user", () => {
   const getUserInfo = async () => {
     // await getUserInfoApi() 调用接口获取用户信息
     user_info.userName = "admin"
-    user_info.avatar = "@/assets/vue.svg"
+    user_info.avatar = "../../assets/vue.svg"
     user_info.roleId = 1
     user_info.roleName = "系统管理员"
   }
