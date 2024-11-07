@@ -37,6 +37,11 @@ export const useAppStore = defineStore("app", () => {
     sidebar.opened = !sidebar.opened
     sidebar.withoutAnimation = withoutAnimation
   }
+  /** 打开侧边栏 */
+  const openSidebar = (withoutAnimation: boolean) => {
+    sidebar.opened = true
+    sidebar.withoutAnimation = withoutAnimation
+  }
   /** 关闭侧边栏 */
   const closeSidebar = (withoutAnimation: boolean) => {
     sidebar.opened = false
@@ -47,5 +52,5 @@ export const useAppStore = defineStore("app", () => {
     device.value = value
   }
 
-  return { device, sidebar, resizeCount, toggleSidebar, closeSidebar, toggleDevice }
+  return { device, sidebar, resizeCount, toggleSidebar, openSidebar, closeSidebar, toggleDevice }
 })
