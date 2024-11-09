@@ -16,7 +16,7 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
     resolve: {
       alias: {
         /** @ 符号指向 src 目录 */
-        "@": resolve(__dirname, "./src")
+        "@": resolve(__dirname, "src")
       }
     },
     server: {
