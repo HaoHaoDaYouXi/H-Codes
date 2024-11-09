@@ -153,13 +153,14 @@
 }
 
 .top-nav-user-box {
-  margin-bottom: 8px;
+  display: block;
+  //margin-bottom: 8px;
   background-color: #eaf1fe;
 }
 
 .top-nav-user-name {
   width: 100%;
-  padding-top: 12px;
+  padding-top: 5px;
   line-height: 1.25;
   font-size: 16px;
   font-family: PingFang SC-Bold, PingFang SC;
@@ -174,8 +175,8 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding-bottom: 12px;
-  margin-top: 4px;
+  //padding-bottom: 12px;
+  //margin-top: 4px;
 
   p {
     width: calc(100% - 32px);
@@ -223,9 +224,9 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 10px 0;
-  margin-top: 8px;
+  padding: 3px 0;
   border-top: 1px solid #EFF2F7;
+  color: #606266;
 }
 
 .top-nav-pc-project {
