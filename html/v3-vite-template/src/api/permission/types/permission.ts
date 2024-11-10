@@ -8,6 +8,7 @@ export interface PermissionData {
   component: string
   disabled: number
   meta: RouteMeta
+  children: PermissionData[]
 }
 
 export type PermissionRes = ApiRes<{ routerDetails: PermissionData[] }>
