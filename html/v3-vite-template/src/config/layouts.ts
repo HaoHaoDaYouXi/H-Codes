@@ -22,7 +22,7 @@ export interface LayoutSettings {
 /** 默认配置 */
 const defaultSettings: LayoutSettings = {
   showSettings: true,
-  layoutMode: LayoutModeEnum.Left,
+  layoutMode: LayoutModeEnum.LeftTop,
   showLogo: true,
   fixedHeader: true,
   showTagsView: true,
