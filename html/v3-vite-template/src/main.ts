@@ -12,6 +12,7 @@ import commonFormRules from "@/utils/rules"
 
 // css
 import "uno.css"
+import "normalize.css"
 import "element-plus/dist/index.css"
 import "element-plus/theme-chalk/dark/css-vars.css"
 import "vxe-table/lib/style.css"
