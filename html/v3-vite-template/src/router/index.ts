@@ -5,6 +5,26 @@ import Home from "@/router/modules/home"
 /** 常驻路由 */
 export const constantRoutes: RouteRecordRaw[] = [
   {
+    path: "/",
+    component: () => import("@/views/homeMiddleware/index.vue"),
+    meta: {
+      hidden: true
+    }
+  },
+  {
+    path: "/redirect",
+    component: Layout,
+    meta: {
+      hidden: true
+    },
+    children: [
+      {
+        path: ":path(.*)",
+        component: () => import("@/views/redirect/index.vue")
+      }
+    ]
+  },
+  {
     path: "/login",
     component: () => import("@/views/login/index.vue"),
     meta: {
