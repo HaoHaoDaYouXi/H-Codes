@@ -15,6 +15,8 @@ export const usePermissionStore = defineStore("permission", () => {
   const addRouter = ref<any[]>([])
   /** 当前使用路由 */
   const currentRoutes = ref()
+  /** 默认打开的路由 */
+  const defaultOpenRoute = ref()
 
   /** 获取路由 */
   const getRouterByUser = async () => {
@@ -42,6 +44,7 @@ export const usePermissionStore = defineStore("permission", () => {
     }
     // 格式化路由对象
     addRouter.value = generateRoutes(data.routerDetails)
+    defaultOpenRoute.value = addRouter.value[0].children[0]
     // data.routerDetails.forEach((route) => {
     //   const tmp: RouteRecordRaw = {
     //     ...route,
@@ -72,7 +75,14 @@ export const usePermissionStore = defineStore("permission", () => {
     return res
   }
 
-  return { routes, booAddRoutes, addRouter, currentRoutes, getRouterByUser }
+  return {
+    routes,
+    booAddRoutes,
+    addRouter,
+    currentRoutes,
+    defaultOpenRoute,
+    getRouterByUser
+  }
 })
 
 /** 在 setup 外使用 */
