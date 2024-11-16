@@ -33,7 +33,7 @@ export const useTagsViewStore = defineStore("tags-view", () => {
   const addCachedView = (view: TagView) => {
     if (typeof view.name !== "string") return
     if (cachedViews.value.includes(view.name)) return
-    if (view.meta?.keepAlive) cachedViews.value.push(view.name)
+    if (view.meta?.cachedView) cachedViews.value.push(view.name)
   }
   //#endregion
 
@@ -63,7 +63,7 @@ export const useTagsViewStore = defineStore("tags-view", () => {
     if (index !== -1) {
       cachedViews.value = cachedViews.value.slice(index, index + 1)
     } else {
-      // 如果 index = -1, 没有缓存的 tags
+      // 如果 index1 = -1, 没有缓存的 tags
       cachedViews.value = []
     }
   }
