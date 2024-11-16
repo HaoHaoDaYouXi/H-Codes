@@ -16,7 +16,9 @@ export interface LayoutSettings {
   /** 是否缓存标签栏 */
   cacheTagsView: boolean
   /** 是否显示全屏按钮 */
-  showFullScreen: boolean
+  showScreenFull: boolean
+  /** 是否显示页脚 Footer */
+  showFooter: boolean
 }
 
 /** 默认配置 */
@@ -27,7 +29,8 @@ const defaultSettings: LayoutSettings = {
   fixedHeader: true,
   showTagsView: true,
   cacheTagsView: false,
-  showFullScreen: true
+  showScreenFull: true,
+  showFooter: true
 }
 
 /** 项目配置 */
