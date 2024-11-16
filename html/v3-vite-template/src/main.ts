@@ -6,7 +6,7 @@ import "@/router/permission"
 
 // load
 import { loadPlugins } from "@/plugins"
-import { loadIcons } from "@/icons"
+import { loadSvg } from "@/icons"
 import { loadDirectives } from "@/directives"
 import commonFormRules from "@/utils/rules"
 
@@ -26,8 +26,8 @@ app.config.globalProperties.commonFormRules = commonFormRules
 
 // 加载插件
 loadPlugins(app)
-// 加载全局 icon（el-icon、svgIcon）
-loadIcons(app)
+// 加载全局 SVG
+loadSvg(app)
 // 加载自定义指令
 loadDirectives(app)
 
