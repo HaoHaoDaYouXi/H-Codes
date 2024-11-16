@@ -1,6 +1,6 @@
 <!-- svg-icon 组件 -->
 <template>
-  <svg class="svg-icon" aria-hidden="true">
+  <svg class="svg-icon">
     <use :href="symbolId" />
   </svg>
 </template>
