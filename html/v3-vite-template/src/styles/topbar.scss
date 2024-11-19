@@ -1,4 +1,5 @@
 .top-nav {
+  height: var(--topbar-height);
   width: 100%;
   background: linear-gradient(-90deg, #1357EB 0%, #2D7BFC 99%);
   position: fixed;
@@ -26,7 +27,7 @@
     display: inline-block;
     // 334px: 左侧图标宽度 262 + 右侧按钮按钮区宽度 323  + 1px误差
     width: calc(100% - 586px);
-    height: $topBarHeight;
+    height: var(--topbar-height);
     white-space: nowrap;
     overflow: hidden;
   }

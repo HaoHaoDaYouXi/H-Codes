@@ -9,17 +9,12 @@ $menuHover: #EFF4F9;
 $subMenuBg: #FFFFFF;
 $subMenuHover: #EFF4F9;
 
-$sideBarWidth: 228px;
-$topBarHeight: 68px;
 $topBarMenuHover: transparent;
-$contentHeight: calc(100vh - #{$topBarHeight});
 
 $fcmain: #2975F9;
 $bgmain: $fcmain;
 $mainContainerBg: #F1F4F9;
 $danger: #FF4545;
-/* 143 = top-nav + tag-view + navbar 68 + 38 + 37  */
-$paddingT: 143px;
 
 // the :export directive is the magic sauce for webpack
 // https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass
@@ -31,5 +26,4 @@ $paddingT: 143px;
   menuHover: $menuHover;
   subMenuBg: $subMenuBg;
   subMenuHover: $subMenuHover;
-  sideBarWidth: $sideBarWidth;
 }

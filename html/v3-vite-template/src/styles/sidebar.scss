@@ -2,22 +2,22 @@
   .main-container {
     min-height: 100%;
     transition: margin-left .28s;
-    margin-left: $sideBarWidth;
+    margin-left: var(--sidebar-width);
     position: relative;
     background-color: $mainContainerBg;
   }
 
   .sidebar-container {
     transition: width 0.28s;
-    width: $sideBarWidth !important;
-    padding: 0 11px;
+    width: var(--sidebar-width) !important;
+    padding: 0 var(--sidebar-padding-left-right);
     background-color: $menuBg;
     //height: 100%;
-    height: $contentHeight;
+    height: var(--sidebar-content-height);
     position: fixed;
     font-size: 0;
     // top: 0;
-    top: $topBarHeight;
+    top: var(--topbar-height);
     bottom: 0;
     left: 0;
     z-index: 1001;
@@ -194,7 +194,7 @@
   }
 
   .el-menu--collapse .el-menu .el-submenu {
-    min-width: $sideBarWidth !important;
+    min-width: var(--sidebar-width) !important;
   }
 
   // mobile responsive
@@ -205,14 +205,14 @@
 
     .sidebar-container {
       transition: transform .28s;
-      width: $sideBarWidth !important;
+      width: var(--sidebar-width) !important;
     }
 
     &.hideSidebar {
       .sidebar-container {
         pointer-events: none;
         transition-duration: 0.3s;
-        transform: translate3d(-$sideBarWidth, 0, 0);
+        transform: translate3d(calc(-1 * var(--sidebar-width)), 0, 0);
       }
     }
   }
