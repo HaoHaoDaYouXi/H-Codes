@@ -16,7 +16,11 @@
           v-for="item in routes"
           :key="item.path"
           :item="item"
-          :base-path="permissionStore.currentRoutes?.path + '/' + item.path"
+          :base-path="
+            layoutMode === LayoutModeEnum.Left
+              ? item.path
+              : permissionStore.currentRoutes?.path + '/' + item.path
+          "
         />
       </el-menu>
     </el-scrollbar>
@@ -28,6 +32,7 @@ import { ref, reactive, computed } from "vue"
 import { type RouteRecordRaw, useRoute } from "vue-router"
 import { storeToRefs } from "pinia"
 import { useSettingsStore } from "@/store/modules/settings"
+import { LayoutModeEnum } from "@/constants/app-key"
 import { useAppStore } from "@/store/modules/app"
 import { usePermissionStore } from "@/store/modules/permission"
 import variables from "@/styles/variables.module.scss"
@@ -39,7 +44,7 @@ const settingsStore = useSettingsStore()
 const appStore = useAppStore()
 const permissionStore = usePermissionStore()
 
-const { showLogo } = storeToRefs(settingsStore)
+const { showLogo, layoutMode } = storeToRefs(settingsStore)
 const { sidebar } = storeToRefs(appStore)
 
 const isCollapse = computed(() => {
@@ -53,6 +58,10 @@ const activeMenu = computed(() => {
   return path
 })
 const routes = computed(() => {
-  return permissionStore.currentRoutes?.children || []
+  if (layoutMode.value !== LayoutModeEnum.Left) {
+    return permissionStore.currentRoutes?.children || []
+  } else {
+    return permissionStore.routes
+  }
 })
 </script>

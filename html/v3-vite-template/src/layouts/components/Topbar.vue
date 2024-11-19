@@ -7,7 +7,7 @@
     <div class="el-menu-box" ref="elMenuBoxRef">
       <el-menu
         ref="elMenuRef"
-        v-if="layoutMode.concat(LayoutModeEnum.Top)"
+        v-if="layoutMode !== LayoutModeEnum.Left"
         :active-text-color="variables.menuActiveText"
         :default-active="activeMenu"
         mode="horizontal"
