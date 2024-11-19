@@ -678,7 +678,7 @@
   max-width: 40%
 }
 
-.jw-el-tooltip-tag-view.el-tooltip__popper.is-light {
+.el-tooltip__popper.is-light {
   border: 1px solid #9a9b9e;
   color: #2F2F2F;
   background-color: #f6f6f6;
@@ -942,12 +942,6 @@
   list-style: none;
 }
 
-.jw-org-search {
-  &.el-autocomplete-suggestion li:hover {
-    background-color: transparent;
-  }
-}
-
 .rank-page {
   .el-scrollbar__wrap {
     overflow-x: hidden !important;
@@ -985,67 +979,6 @@
       &:hover {
         background-color: #b4bccc;
         color: #fff;
-      }
-    }
-  }
-}
-
-.jw-messageCenter-messageManagement-message {
-  .el-scrollbar__wrap {
-    overflow-x: hidden !important;
-  }
-
-  .el-card__body {
-    padding: 15px 16px 0 16px;
-    width: 100%;
-
-    .el-table {
-      .el-table__header {
-        width: 100%;
-      }
-    }
-
-    .el-tabs {
-      .el-tabs__header {
-        margin: 2px;
-      }
-    }
-  }
-
-  .el-table tr {
-    background-color: #fbfcfd;
-  }
-
-  .el-table__body tr.current-row > td {
-    background: #EFF4F9;
-  }
-
-  .el-tabs {
-    // box-shadow: 0px 1px 2px 0px rgba(94,113,129,0.102);
-    .el-tabs__header {
-      .el-tabs__active-bar {
-        width: 82px;
-        height: 3px;
-        background: #2875F9;
-      }
-
-      .el-tabs__item {
-        width: 82px;
-        height: 30px;
-        line-height: 30px;
-        text-align: center;
-        margin-bottom: 4px;
-        padding: 0px;
-        font-size: 16px;
-        font-family: 'PingFang SC-Bold, PingFang SC';
-      }
-
-      .el-tabs__nav-wrap {
-        box-shadow: 0px 1px 2px 0px rgba(94, 113, 129, 0.102);
-      }
-
-      .el-tabs__nav-wrap::after {
-        height: 0px;
       }
     }
   }
