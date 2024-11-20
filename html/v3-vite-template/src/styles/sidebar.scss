@@ -67,8 +67,8 @@
         height: 100%;
         width: 100% !important;
 
-        .el-submenu {
-          .el-submenu__title {
+        .el-sub-menu {
+          .el-sub-menu__title {
             height: 36px;
             line-height: 36px;
             margin: 7px auto;
@@ -80,7 +80,7 @@
           }
 
           &.is-active {
-            & > .el-submenu__title {
+            & > .el-sub-menu__title {
               color: $subMenuActiveText !important;
               background-color: #F1F1F3 !important;
             }
@@ -102,11 +102,12 @@
             background: linear-gradient(-90deg, #5CA5FD 11%, #266DFF 100%);
 
             &:hover {
-              color: inherit;
+              color: $menuHover ! important
             }
 
             &:focus {
-              color: inherit;
+              color: $menuHover ! important
+              //color: inherit;
             }
             & > .round {
               border-color: #FFFFFF;
@@ -156,10 +157,10 @@
       }
     }
 
-    .el-submenu {
+    .el-sub-menu {
       overflow: hidden;
 
-      & > .el-submenu__title {
+      & > .el-sub-menu__title {
         padding: 0 !important;
 
         .svg-icon {
@@ -172,15 +173,15 @@
           text-align: center;
         }
 
-        .el-submenu__icon-arrow {
+        .el-sub-menu__icon-arrow {
           display: none;
         }
       }
     }
 
     .el-menu--collapse {
-      .el-submenu {
-        & > .el-submenu__title {
+      .el-sub-menu {
+        & > .el-sub-menu__title {
           & > span {
             height: 0;
             width: 0;
@@ -193,7 +194,7 @@
     }
   }
 
-  .el-menu--collapse .el-menu .el-submenu {
+  .el-menu--collapse .el-menu .el-sub-menu {
     min-width: var(--sidebar-width) !important;
   }
 
@@ -239,20 +240,20 @@
     }
 
     .nest-menu {
-      .el-submenu {
-        .el-submenu__title {
+      .el-sub-menu {
+        .el-sub-menu__title {
           height: 36px;
           line-height: 36px;
           margin: 7px auto;
 
           &:hover {
-            // you can use $subMenuHover
+            // you can use $submenuHover
             background-color: $menuHover !important;
           }
         }
 
         &.is-active {
-          .el-submenu__title {
+          .el-sub-menu__title {
             border-radius: 4px;
             color: $subMenuActiveText !important;
             background-color: #F1F1F3 !important;
@@ -271,11 +272,11 @@
           background: linear-gradient(-90deg, #5CA5FD 11%, #266DFF 100%);
 
           &:hover {
-            color: inherit;
+            color: $menuHover ! important
           }
 
           &:focus {
-            color: inherit;
+            color: $menuHover ! important
           }
         }
 
