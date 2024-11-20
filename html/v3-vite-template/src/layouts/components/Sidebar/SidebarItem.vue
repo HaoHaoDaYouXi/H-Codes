@@ -25,7 +25,8 @@
               />
               <SvgIcon v-else :name="hasOneShowingChild.meta?.icon" />
             </template>
-            <component v-if="hasOneShowingChild.meta?.elIcon" :is="hasOneShowingChild.meta?.elIcon" class="el-icon" />
+            <component v-else-if="hasOneShowingChild.meta?.elIcon" :is="hasOneShowingChild.meta?.elIcon" class="el-icon" />
+            <i v-else class="round" />
             <span>{{ hasOneShowingChild.meta?.title }}</span>
           </template>
         </el-menu-item>
