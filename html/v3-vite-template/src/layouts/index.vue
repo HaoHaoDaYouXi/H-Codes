@@ -13,6 +13,7 @@
           :exData="{ hideHamburger: classObj.noSidebar }"
           v-if="showTagsView"
         />
+        <Navbar />
       </div>
       <AppMain />
     </div>
@@ -24,7 +25,7 @@ import { computed, ref, watch } from "vue"
 import { storeToRefs } from "pinia"
 import { useSettingsStore } from "@/store/modules/settings"
 import { useAppStore } from "@/store/modules/app"
-import { AppMain, Topbar, Sidebar, TagsView } from "./components"
+import { AppMain, Topbar, Sidebar, TagsView, Navbar } from "./components"
 import { DeviceEnum } from "@/constants/app-key"
 
 const settingsStore = useSettingsStore()
