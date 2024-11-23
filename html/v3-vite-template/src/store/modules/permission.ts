@@ -17,6 +17,8 @@ export const usePermissionStore = defineStore("permission", () => {
   const currentRoutes = ref()
   /** 默认打开的路由 */
   const defaultOpenRoute = ref()
+  /** 面包屑列表 */
+  const breadcrumbList = ref<any[]>([])
 
   /** 获取路由 */
   const getRouterByUser = async () => {
