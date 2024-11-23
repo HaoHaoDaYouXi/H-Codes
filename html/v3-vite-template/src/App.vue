@@ -1,8 +1,16 @@
 <template>
-  <router-view />
+  <div id="app">
+    <el-config-provider
+      :locale="elLocaleMap[useLocaleStoreHook().defaultLocale]"
+    >
+      <router-view />
+    </el-config-provider>
+  </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { elLocaleMap, useLocaleStoreHook } from "@/store/modules/locale"
+</script>
 
 <style lang="scss">
 * {
