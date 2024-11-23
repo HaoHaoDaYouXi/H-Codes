@@ -46,3 +46,11 @@ export const setVisitedViews = (views: TagView[]) => {
   })
   localStorage.setItem(CacheKey.VISITED_VIEWS, JSON.stringify(views))
 }
+
+// 语言
+export const getLocale = () => {
+  return localStorage.getItem(CacheKey.LOCALE)
+}
+export const setLocale = (views: string) => {
+  localStorage.setItem(CacheKey.LOCALE, views)
+}
