@@ -58,7 +58,7 @@
                 <!-- 可选角色列表 -->
                 <el-dropdown-item
                   class="hover-focus-cancel"
-                  v-for="item in roleList"
+                  v-for="item in userStore.roleList"
                   :key="item.value"
                   :disabled="item.value === user_info.roleId"
                 >
@@ -85,7 +85,7 @@
 
 <script lang="ts" setup>
 import { computed, nextTick, onMounted, reactive, ref, watch } from "vue"
-import { type RouteRecordRaw, RouterLink, useRoute } from "vue-router"
+import { type RouteRecordRaw, RouterLink, useRoute, useRouter } from "vue-router"
 import { storeToRefs } from "pinia"
 import { useSettingsStore } from "@/store/modules/settings"
 import { useAppStore } from "@/store/modules/app"
@@ -99,6 +99,7 @@ import SidebarItemLink from "./Sidebar/SidebarItemLink.vue"
 import { isExternal } from "@/utils/validate"
 
 const route = useRoute()
+const router = useRouter()
 const settingsStore = useSettingsStore()
 const appStore = useAppStore()
 const userStore = useUserStore()
@@ -118,37 +119,19 @@ const activeMenu = computed(() => {
   // 如果不是首页，高亮一级菜单
   return "/" + path.split("/")[1]
 })
-// console.log("route", route.params)
-// console.log("activeMenu", activeMenu)
+
 const permission_routes = computed(() => {
   return permissionStore.routes.filter((route) => !route.meta?.hidden)
 })
-const user_info = reactive({
-  ...userStore.user_info,
-  avatar: new URL(userStore.user_info.avatar, import.meta.url).href
+
+const user_info = computed(() => {
+  return {
+    ...userStore.user_info,
+    avatar: new URL(userStore.user_info.avatar, import.meta.url).href
+  }
 })
 
 const booRoleList = ref<boolean>(false)
-const roleList = computed(() => {
-  return [
-    {
-      value: 1,
-      label: "系统管理员"
-    },
-    {
-      value: 2,
-      label: "测试人员1"
-    },
-    {
-      value: 3,
-      label: "测试人员2"
-    },
-    {
-      value: 4,
-      label: "测试人员3"
-    }
-  ]
-})
 
 const resolvePath = (item: RouteRecordRaw) => {
   // 如果是个完成的url直接返回
@@ -188,11 +171,14 @@ const resolvePath = (item: RouteRecordRaw) => {
   }
   return item.path
 }
-const handleRoleSelect = (item: number) => {
-  console.log(item)
+
+const handleRoleSelect = (roleId: number) => {
+  userStore.changeRole(roleId)
 }
+
 const logout = () => {
-  console.log("注销")
+  userStore.logout()
+  router.push("/login")
 }
 
 onMounted(() => {

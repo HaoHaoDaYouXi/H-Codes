@@ -4,21 +4,33 @@ import { defineStore } from "pinia"
 import { type RouteRecordRaw } from "vue-router"
 import { componentsMap, constantRoutes } from "@/router"
 import { getRouterByUserApi } from "@/api/permission"
-import { PermissionRes, PermissionData} from "@/api/permission/types/permission"
+import {
+  PermissionRes,
+  PermissionData
+} from "@/api/permission/types/permission"
 
 export const usePermissionStore = defineStore("permission", () => {
   /** 可访问的路由 */
-  const routes = ref<any[]>(constantRoutes)
+  const routes = ref<any[]>([])
   /** 是否已经添加路由 */
-  const booAddRoutes = ref<boolean>()
+  const booAddRoutes = ref<boolean>(false)
   /** 添加路由 */
   const addRouter = ref<any[]>([])
   /** 当前使用路由 */
-  const currentRoutes = ref()
+  const currentRoutes = ref(undefined)
   /** 默认打开的路由 */
-  const defaultOpenRoute = ref()
+  const defaultOpenRoute = ref(undefined)
   /** 面包屑列表 */
   const breadcrumbList = ref<any[]>([])
+  /** 重置状态 */
+  const resetState = () => {
+    routes.value = []
+    booAddRoutes.value = false
+    addRouter.value = []
+    currentRoutes.value = undefined
+    defaultOpenRoute.value = undefined
+    breadcrumbList.value = []
+  }
 
   /** 获取路由 */
   const getRouterByUser = async () => {
@@ -30,16 +42,67 @@ export const usePermissionStore = defineStore("permission", () => {
             id: "1",
             parentId: "0",
             resType: 2,
-            path: "/",
-            // component: "Index",
+            path: "/test",
             component: "Layout",
             // redirect: "/",
             disabled: 0,
             meta: {
               title: "首页",
-              hidden: false
+              icon: "el-icon-s-home",
+              hidden: false,
+              breadcrumb: true,
+              alwaysShow: true
             },
-            children: []
+            children: [
+              {
+                id: "2",
+                parentId: "1",
+                resType: 2,
+                path: "index",
+                component: "Index",
+                disabled: 0,
+                meta: {
+                  title: "首页1",
+                  icon: "el-icon-s-home",
+                  breadcrumb: true,
+                  // affix: false,
+                  hidden: false
+                },
+                children: []
+              }
+            ]
+          },
+          {
+            id: "11",
+            parentId: "0",
+            resType: 2,
+            path: "/table",
+            component: "Layout",
+            // redirect: "/table/element-plus",
+            disabled: 0,
+            meta: {
+              title: "表格",
+              elIcon: "Grid",
+              breadcrumb: true,
+              alwaysShow: true
+            },
+            children: [
+              {
+                id: "22",
+                parentId: "11",
+                resType: 2,
+                path: "element-plus",
+                component: "Table",
+                disabled: 0,
+                meta: {
+                  title: "Element Plus",
+                  elIcon: "List",
+                  breadcrumb: true
+                  // ,cachedView: true
+                },
+                children: []
+              }
+            ]
           }
         ]
       }
@@ -47,15 +110,7 @@ export const usePermissionStore = defineStore("permission", () => {
     // 格式化路由对象
     addRouter.value = generateRoutes(data.routerDetails)
     defaultOpenRoute.value = addRouter.value[0].children[0]
-    // data.routerDetails.forEach((route) => {
-    //   const tmp: RouteRecordRaw = {
-    //     ...route,
-    //     component: componentsMap[route.component],
-    //     name: route.component === "Layout" ? route.path.replace(/^\//, "") : route.component
-    //   }
-    //   addRouter.value.push(tmp)
-    // })
-    routes.value = routes.value.concat(addRouter.value)
+    routes.value = constantRoutes.concat(addRouter.value)
   }
   /** 格式化路由 */
   const generateRoutes = (routers: PermissionData[]) => {
@@ -78,11 +133,13 @@ export const usePermissionStore = defineStore("permission", () => {
   }
 
   return {
+    resetState,
     routes,
     booAddRoutes,
     addRouter,
     currentRoutes,
     defaultOpenRoute,
+    breadcrumbList,
     getRouterByUser
   }
 })
