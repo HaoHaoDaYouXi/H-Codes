@@ -24,7 +24,7 @@ export interface LayoutSettings {
 /** 默认配置 */
 const defaultSettings: LayoutSettings = {
   showSettings: true,
-  layoutMode: LayoutModeEnum.Left,
+  layoutMode: LayoutModeEnum.LeftTop,
   showLogo: false,
   fixedHeader: true,
   showTagsView: true,
@@ -34,4 +34,7 @@ const defaultSettings: LayoutSettings = {
 }
 
 /** 项目配置 */
-export const layoutSettings: LayoutSettings = { ...defaultSettings, ...getConfigLayout() }
+export const layoutSettings: LayoutSettings = {
+  ...defaultSettings,
+  ...getConfigLayout()
+}

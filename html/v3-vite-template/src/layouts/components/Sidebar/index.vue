@@ -28,8 +28,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, computed } from "vue"
-import { type RouteRecordRaw, useRoute } from "vue-router"
+import { computed } from "vue"
+import { useRoute } from "vue-router"
 import { storeToRefs } from "pinia"
 import { useSettingsStore } from "@/store/modules/settings"
 import { LayoutModeEnum } from "@/constants/app-key"

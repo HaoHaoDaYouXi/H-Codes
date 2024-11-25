@@ -31,7 +31,7 @@
 
     .el-scrollbar {
       height: 100%;
-      padding-top: 13px;
+      padding-top: 10px;
 
       .scrollbar-wrapper {
         overflow-x: hidden !important;
@@ -131,14 +131,14 @@
 
   .hideSidebar {
     .sidebar-container {
-      width: 54px !important;
+      width: var(--hiden-sidebar-width) !important;
     }
 
     .main-container {
-      margin-left: 54px;
+      margin-left: var(--hiden-sidebar-width);
     }
 
-    .submenu-title-noDropdown {
+    .sub-menu-title-noDropdown {
       padding: 0 !important;
       position: relative;
 

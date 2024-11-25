@@ -1,7 +1,6 @@
 ﻿import { ref } from "vue"
 import store from "@/store"
 import { defineStore } from "pinia"
-import { type RouteRecordRaw } from "vue-router"
 import { componentsMap, constantRoutes } from "@/router"
 import { getRouterByUserApi } from "@/api/permission"
 import {

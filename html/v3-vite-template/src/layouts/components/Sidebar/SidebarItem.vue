@@ -15,7 +15,7 @@
       >
         <el-menu-item
           :index="resolvePath(hasOneShowingChild.path)"
-          :class="{ 'submenu-title-noDropdown': !isNest }"
+          :class="{ 'sub-menu-title-noDropdown': !isNest }"
         >
           <template v-if="hasOneShowingChild.meta?.title" #title>
             <template v-if="hasOneShowingChild.meta?.icon">
@@ -23,9 +23,17 @@
                 v-if="iIcon(hasOneShowingChild.meta?.icon) != ''"
                 :class="iIcon(hasOneShowingChild.meta?.icon)"
               />
-              <SvgIcon v-else :name="hasOneShowingChild.meta?.icon" />
+              <SvgIcon
+                v-else
+                :name="hasOneShowingChild.meta?.icon"
+                class="el-icon sub-el-icon"
+              />
             </template>
-            <component v-else-if="hasOneShowingChild.meta?.elIcon" :is="hasOneShowingChild.meta?.elIcon" class="el-icon" />
+            <component
+              v-else-if="hasOneShowingChild.meta?.elIcon"
+              :is="hasOneShowingChild.meta?.elIcon"
+              class="el-icon sub-el-icon"
+            />
             <i v-else class="round" />
             <span>{{ hasOneShowingChild.meta?.title }}</span>
           </template>
@@ -45,9 +53,17 @@
             v-if="iIcon(props.item.meta?.icon) != ''"
             :class="iIcon(props.item.meta?.icon)"
           />
-          <SvgIcon v-else :name="props.item.meta?.icon" />
+          <SvgIcon
+            v-else
+            :name="props.item.meta?.icon"
+            class="el-icon sub-el-icon"
+          />
         </template>
-        <component v-if="props.item.meta?.elIcon" :is="props.item.meta?.elIcon" class="el-icon" />
+        <component
+          v-if="props.item.meta?.elIcon"
+          :is="props.item.meta?.elIcon"
+          class="el-icon sub-el-icon"
+        />
         <span>{{ props.item.meta?.title }}</span>
       </template>
       <template v-if="props.item.children && props.item.children?.length != 0">
@@ -110,9 +126,9 @@ const hasOneShowingChild = computed(() => {
 
 const iIcon = (icon: string) => {
   if (icon.includes("el-icon")) {
-    return icon + " sub-el-icon mr-8"
+    return icon + " el-icon sub-el-icon mr-8"
   } else if (icon.includes("iconfont")) {
-    return icon + " sub-el-icon mr-5 text-18"
+    return icon + " el-icon sub-el-icon mr-5 text-18"
   } else {
     return ""
   }
@@ -145,7 +161,6 @@ const resolvePath = (routePath: string) => {
   display: inline-block;
   text-align: center;
   color: currentColor;
-  line-height: 36px;
 }
 .mr-8 {
   margin-right: 8px;

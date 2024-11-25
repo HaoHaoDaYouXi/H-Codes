@@ -12,7 +12,11 @@
         :default-active="activeMenu"
         mode="horizontal"
       >
-        <div v-for="item in permission_routes" :key="item.path" class="nav-item">
+        <div
+          v-for="item in permission_routes"
+          :key="item.path"
+          class="nav-item"
+        >
           <SidebarItemLink :to="resolvePath(item)">
             <el-menu-item v-if="!item.meta?.hidden" :index="item.path">
               <i v-if="item.meta?.icon" :class="item.meta?.icon" />
@@ -84,8 +88,13 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, nextTick, onMounted, reactive, ref, watch } from "vue"
-import { type RouteRecordRaw, RouterLink, useRoute, useRouter } from "vue-router"
+import { computed, nextTick, onMounted, ref, watch } from "vue"
+import {
+  type RouteRecordRaw,
+  RouterLink,
+  useRoute,
+  useRouter
+} from "vue-router"
 import { storeToRefs } from "pinia"
 import { useSettingsStore } from "@/store/modules/settings"
 import { useAppStore } from "@/store/modules/app"

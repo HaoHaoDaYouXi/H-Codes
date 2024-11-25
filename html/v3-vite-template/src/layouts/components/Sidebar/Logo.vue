@@ -1,7 +1,12 @@
 <template>
   <div class="sidebar-logo-container" :class="{ collapse: props.collapse }">
     <transition name="sidebarLogoFade">
-      <router-link v-if="props.collapse" key="collapse" class="sidebar-logo-link" to="/">
+      <router-link
+        v-if="props.collapse"
+        key="collapse"
+        class="sidebar-logo-link"
+        to="/"
+      >
         <img v-if="logo" :src="logo" class="sidebar-logo" alt="" />
         <h1 v-else class="sidebar-title">{{ title }}</h1>
       </router-link>
@@ -15,7 +20,7 @@
 
 <script setup lang="ts">
 const title = import.meta.env.VITE_APP_TITLE
-const logo = "@/assets/vue.svg"
+import logo from "/vite.svg"
 
 interface Props {
   collapse?: boolean
@@ -41,9 +46,7 @@ const props = withDefaults(defineProps<Props>(), {
 .sidebar-logo-container {
   position: relative;
   width: 100%;
-  //height: 58px;
-  //line-height: 58px;
-  padding: 13px 0;
+  padding-top: 10px;
   background: $menuBg;
   text-align: center;
   overflow: hidden;

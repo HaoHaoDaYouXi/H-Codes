@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, ref, watch } from "vue"
+import { computed } from "vue"
 import { storeToRefs } from "pinia"
 import { useSettingsStore } from "@/store/modules/settings"
 import { useAppStore } from "@/store/modules/app"
@@ -75,7 +75,7 @@ const handleClickOutside = () => {
 
 .hideSidebar {
   .fixed-header {
-    left: 54px;
+    left: var(--hiden-sidebar-width);
   }
 }
 

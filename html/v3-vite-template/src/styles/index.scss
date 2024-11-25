@@ -15,6 +15,7 @@
   --tag-view-border-bottom: 1px;
   --navbar-height: 38px;
   --sidebar-width: 228px;
+  --hiden-sidebar-width: 54px;
   --sidebar-padding-left-right: 11px;
   --sidebar-content-height: calc(100vh - var(--topbar-height));
   /* 143 = top-nav + tag-view + navbar 68 + 36 + 1 + 38 */
@@ -37,6 +38,7 @@ body {
 body.content-large {
   --topbar-height: 0px;
   --sidebar-width: 0px;
+  //--hiden-sidebar-width: 0px;
   --sidebar-padding-left-right: 0px;
   --app-main-paddingT: calc(var(--tag-view-height) + var(--tag-view-border-bottom) + var(--navbar-height));
 }
@@ -47,6 +49,7 @@ body.content-full {
   --tag-view-height: 0px;
   --tag-view-border-bottom: 0px;
   --sidebar-width: 0px;
+  --hiden-sidebar-width: 0px;
   --sidebar-padding-left-right: 0px;
   --app-main-paddingT: calc(var(--navbar-height));
 }

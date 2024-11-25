@@ -29,7 +29,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, ref, watchEffect } from "vue"
+import { computed, watchEffect } from "vue"
 import { useAppStore } from "@/store/modules/app"
 import { ElMessage } from "element-plus"
 import screenfull from "screenfull"
@@ -63,7 +63,9 @@ const fullscreenSvgName = computed(() => {
 })
 const handleFullscreenClick = () => {
   const dom = document.querySelector(props.element) || undefined
-  screenfull.isEnabled ? screenfull.toggle(dom) : ElMessage.warning("您的浏览器无法工作")
+  screenfull.isEnabled
+    ? screenfull.toggle(dom)
+    : ElMessage.warning("您的浏览器无法工作")
 }
 const handleFullscreenChange = () => {
   appStore.isFullscreen = screenfull.isFullscreen
@@ -104,7 +106,6 @@ const handleContentFullClick = () => {
   // 开启全屏
   handleFullscreenClick()
 }
-//#endregion
 </script>
 
 <style lang="scss" scoped>
