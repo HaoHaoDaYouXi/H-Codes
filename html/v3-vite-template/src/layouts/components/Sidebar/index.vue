@@ -58,10 +58,10 @@ const activeMenu = computed(() => {
   return path
 })
 const routes = computed(() => {
-  if (layoutMode.value !== LayoutModeEnum.Left) {
-    return permissionStore.currentRoutes?.children || []
-  } else {
+  if (layoutMode.value === LayoutModeEnum.Left) {
     return permissionStore.routes
+  } else {
+    return permissionStore.currentRoutes?.children || []
   }
 })
 </script>

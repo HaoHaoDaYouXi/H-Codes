@@ -17,7 +17,7 @@
           :index="resolvePath(hasOneShowingChild.path)"
           :class="{ 'sub-menu-title-noDropdown': !isNest }"
         >
-          <template v-if="hasOneShowingChild.meta?.title" #title>
+          <template v-if="hasOneShowingChild.meta?.title">
             <template v-if="hasOneShowingChild.meta?.icon">
               <i
                 v-if="iIcon(hasOneShowingChild.meta?.icon) != ''"

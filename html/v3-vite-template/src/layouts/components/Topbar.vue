@@ -106,9 +106,11 @@ import { ElMenu } from "element-plus"
 import { debounce } from "lodash-es"
 import SidebarItemLink from "./Sidebar/SidebarItemLink.vue"
 import { isExternal } from "@/utils/validate"
+import { useRouteListener } from "@/hooks/useRouteListener"
 
 const route = useRoute()
 const router = useRouter()
+const { listenerRouteChange } = useRouteListener()
 const settingsStore = useSettingsStore()
 const appStore = useAppStore()
 const userStore = useUserStore()
@@ -125,6 +127,7 @@ const elMenuRef = ref<typeof ElMenu | null>()
 
 const activeMenu = computed(() => {
   const { path } = route
+  initCurrentRoutes()
   // 如果不是首页，高亮一级菜单
   return "/" + path.split("/")[1]
 })
