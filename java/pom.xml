@@ -21,6 +21,7 @@
         <module>springboot-freemarker</module>
         <module>springboot-sharding-jdbc</module>
         <module>springboot-mqtt</module>
+        <module>springboot-camunda</module>
         <module>cloud</module>
     </modules>
 
