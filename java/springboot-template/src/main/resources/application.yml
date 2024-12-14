@@ -37,6 +37,11 @@ mybatis-plus:
     # log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   # xml扫描，多个目录用逗号或者分号分隔(告诉 Mapper 所对应的 XML 文件位置)
   mapper-locations: classpath*:mapper/**Mapper.xml,classpath*:mapper/*/*Mapper.xml
+  global-config:
+    db-config:
+      logic-delete-field: del_status  # 全局逻辑删除字段名
+      logic-delete-value: 1        # 逻辑已删除值 (默认为 1)
+      logic-not-delete-value: 0    # 逻辑未删除值 (默认为 0)
 
 pagehelper:
   # 自动获取数据库类型，选择合适的分页方式
