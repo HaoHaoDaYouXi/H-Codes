@@ -12,6 +12,12 @@ spring:
     active: dev
   application:
     name: demo
+  # Servlet 配置
+  servlet:
+    # 文件上传相关配置项
+    multipart:
+      max-file-size: 500MB # 单个文件大小 默认为1MB
+      max-request-size: 1GB # 设置总上传的文件大小 默认为10MB
   # 资源信息
   messages:
     # 国际化资源文件路径，多个用","分隔
