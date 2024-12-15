@@ -40,7 +40,7 @@ public class HealthController {
     }
 
     /**
-     * Shiro登录示例
+     * Shiro示例
      */
     @OpenApi
     @GetMapping("/shiroLogin")
@@ -51,9 +51,9 @@ public class HealthController {
         subject.login(token); // 登录
         boolean hasRole = subject.hasRole("role"); // 判断是否拥有角色，具体内容是有登录验证时添加进去的
         boolean hasPermission = subject.isPermitted("user:insert"); // 判断是否拥有权限，具体内容是有登录验证时添加进去的
-        //也可以用 subject.checkPermission("user:insert");   没有返回值，没权限抛 AuthenticationException
-
-        ShiroUserInfo shiroUser = (ShiroUserInfo) subject.getPrincipal();  // 获取用户信息
+        // 也可以用 subject.checkPermission("user:insert");   没有返回值，没权限抛 AuthenticationException
+        // 获取用户信息
+        ShiroUserInfo shiroUser = (ShiroUserInfo) subject.getPrincipal();
 
         // 通过 principalCollection 切换用户
         SimplePrincipalCollection principals = new SimplePrincipalCollection(shiroUser, shiroUser.getLoginName());
@@ -67,9 +67,10 @@ public class HealthController {
         if (shiroRealm.isAuthorizationCachingEnabled()) {
             shiroRealm.getAuthorizationCache().remove(principals);
         }
-        // 刷新权限
+        // 切换到上一个身份，因为可以切换多次身份，如 A 切换到 B，然后再切换到 C；那么需要调用两次 releaseRunAs() 才能切换回 A；
         subject.releaseRunAs();
-
+        // 退出
+        subject.logout();
     }
 
 }
