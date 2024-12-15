@@ -1,6 +1,7 @@
 package com.haohaodayouxi.shiro.config.shiro;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.ObjectUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -24,8 +25,12 @@ public class ShiroRealm extends AuthorizingRealm {
         ShiroUserInfo user = (ShiroUserInfo) principalCollection.getPrimaryPrincipal();
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
         // 若要实时更新权限，每次都重新查询
-        simpleAuthorizationInfo.addRoles(user.getRoles());
-        simpleAuthorizationInfo.addStringPermissions(user.getPermissions());
+        if (ObjectUtils.isNotEmpty(user.getRoles())) {
+            simpleAuthorizationInfo.addRoles(user.getRoles());
+        }
+        if (ObjectUtils.isNotEmpty(user.getPermissions())) {
+            simpleAuthorizationInfo.addStringPermissions(user.getPermissions());
+        }
         return simpleAuthorizationInfo;
     }
 
@@ -36,9 +41,18 @@ public class ShiroRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         UsernamePasswordToken uToken = (UsernamePasswordToken) authenticationToken;// 获取用户输入的token
         String username = uToken.getUsername();
-
-        ShiroUserInfo userInfo = new ShiroUserInfo(); // 模拟从数据库查询用户信息
-
+        // 根据username，查询数据库用户信息
+//        if (账号不存在判断) {
+//            throw new UnknownAccountException();
+//        }
+//        if (账号禁用判断) {
+//            throw new DisabledAccountException();
+//        }
+        // 封装用户信息
+        ShiroUserInfo userInfo = new ShiroUserInfo();
+        // 查询用户权限，并赋值
+        // userInfo.setRoles();         @RequiresRoles("admin")  若通过过滤器进行权限校验，可以接口上不写注解
+        // userInfo.setPermissions();   @RequiresPermissions("/userInfo")  若通过过滤器进行权限校验，可以接口上不写注解
         SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(userInfo, userInfo.getPwd(), getName());
         // 设置盐值
         // info.setCredentialsSalt(ByteSource.Util.bytes(userInfo.getCode()));
