@@ -1,18 +1,18 @@
 package com.haohaodayouxi.shiro.config.shiro;
 
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.subject.Subject;
-import org.apache.shiro.web.filter.AccessControlFilter;
-
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
+import org.apache.shiro.web.filter.AccessControlFilter;
 
 import java.util.Set;
 
 /**
  * ShiroRequestUrl
+ * 也可通过 PermissionsAuthorizationFilter 实现
  *
  * @author TONE
  * @date 2024/8/27
