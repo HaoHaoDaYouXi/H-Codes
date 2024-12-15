@@ -28,6 +28,14 @@ public class ShiroRequestUrl extends AccessControlFilter {
      */
     private static final String Forbidden = "/error/403.htm";
 
+    /**
+     * 判断是否允许访问
+     *
+     * @param request  请求
+     * @param response 响应
+     * @param o        配置对象
+     * @return true 允许访问，false 拒绝访问
+     */
     @Override
     protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object o) {
         Subject user = SecurityUtils.getSubject();
@@ -44,6 +52,14 @@ public class ShiroRequestUrl extends AccessControlFilter {
         return false; // 触发 onAccessDenied
     }
 
+    /**
+     * 访问拒绝
+     *
+     * @param servletRequest  请求
+     * @param servletResponse 响应
+     * @return true 继续往下走，false 拦截
+     * @throws Exception 抛出异常
+     */
     @Override
     protected boolean onAccessDenied(ServletRequest servletRequest, ServletResponse servletResponse) throws Exception {
         Subject user = SecurityUtils.getSubject();
