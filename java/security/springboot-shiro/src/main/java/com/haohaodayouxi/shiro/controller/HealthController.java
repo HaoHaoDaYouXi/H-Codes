@@ -49,8 +49,8 @@ public class HealthController {
         // if (subject.isAuthenticated())  判断是否已经登录认证了
         UsernamePasswordToken token = new UsernamePasswordToken("username", "password");
         subject.login(token); // 登录
-        boolean hasRole = subject.hasRole("role"); // 判断是否拥有角色，具体内容是有登录验证时添加进去的
-        boolean hasPermission = subject.isPermitted("user:insert"); // 判断是否拥有权限，具体内容是有登录验证时添加进去的
+        boolean hasRole = subject.hasRole("role"); // 判断是否拥有角色，具体内容是由登录验证时添加进去的
+        boolean hasPermission = subject.isPermitted("user:insert"); // 判断是否拥有权限，具体内容是由登录验证时添加进去的
         // 也可以用 subject.checkPermission("user:insert");   没有返回值，没权限抛 AuthenticationException
         // 获取用户信息
         ShiroUserInfo shiroUser = (ShiroUserInfo) subject.getPrincipal();
