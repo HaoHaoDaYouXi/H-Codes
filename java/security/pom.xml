@@ -7,7 +7,7 @@
         <groupId>com.haohaodayouxi</groupId>
         <artifactId>lib-manage</artifactId>
         <version>1.0.0-21-SNAPSHOT</version>
-        <relativePath/>
+        <relativePath />
     </parent>
 
     <artifactId>security</artifactId>
