@@ -1,12 +1,14 @@
 package com.haohaodayouxi.auth.intercepter;
 
 import com.haohaodayouxi.auth.config.SysAuthProperties;
+import com.haohaodayouxi.common.core.annotation.PermissionApi;
 import com.haohaodayouxi.common.core.constants.CurrentParam;
 import com.haohaodayouxi.common.core.constants.InterceptorCode;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -41,14 +43,20 @@ public class ApiCheckInterceptor implements HandlerInterceptor {
         // 10&12=8   12&12=12   14&12=12
         if ((authStatus & InterceptorCode.USER_TOKEN) != InterceptorCode.USER_TOKEN) {
             // 检查用户的角色和菜单的关系
-            String url = request.getRequestURI();
-            if (!CurrentParam.has(CurrentParam.WHITE_API_KEY) && sysAuthProperties.getWhiteApis().stream().anyMatch(url::contains)) {
-                // 不在白名单内，继续根据权限缓存判断是否可访问
-//                if(接口不可访问) {
-//                    log.error("接口不可访问");
-//                    InterceptorErrorResponse.responseErrorByCode(response, InterceptorCode.API);
-//                    return false;
-//                }
+            String key;
+            PermissionApi permissionApi = (PermissionApi) CurrentParam.get(CurrentParam.PERMISSION_API_KEY);
+            if (ObjectUtils.isEmpty(permissionApi)) {
+                key = request.getRequestURI();
+            } else {
+                key = permissionApi.value();
+            }
+            if (!CurrentParam.has(CurrentParam.WHITE_API_KEY) && sysAuthProperties.getWhiteApis().stream().anyMatch(key::contains)) {
+                // todo 获取api权限缓存 判断是否可访问
+                // if (不可访问) {
+                //     log.error("Api不可访问");
+                //     InterceptorErrorResponse.responseErrorByCode(response, InterceptorCode.API);
+                //     return false;
+                // }
             }
         }
         CurrentParam.put(CurrentParam.AUTH_STATUS_KEY, authStatus | InterceptorCode.API);
