@@ -1,6 +1,7 @@
 package com.haohaodayouxi.auth.intercepter;
 
 import com.haohaodayouxi.common.core.annotation.OpenApi;
+import com.haohaodayouxi.common.core.annotation.PermissionApi;
 import com.haohaodayouxi.common.core.annotation.TokenApi;
 import com.haohaodayouxi.common.core.annotation.WhiteApi;
 import com.haohaodayouxi.common.core.constants.CurrentParam;
@@ -73,6 +74,9 @@ public class InitParamInterceptor implements HandlerInterceptor {
             }
             if (item instanceof WhiteApi api) {
                 CurrentParam.put(CurrentParam.WHITE_API_KEY, api);
+            }
+            if (item instanceof PermissionApi api) {
+                CurrentParam.put(CurrentParam.PERMISSION_API_KEY, api);
             }
         }
     }
