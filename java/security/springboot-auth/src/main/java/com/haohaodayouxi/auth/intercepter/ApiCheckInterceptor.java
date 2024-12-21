@@ -46,6 +46,7 @@ public class ApiCheckInterceptor implements HandlerInterceptor {
             String key;
             PermissionApi permissionApi = (PermissionApi) CurrentParam.get(CurrentParam.PERMISSION_API_KEY);
             if (ObjectUtils.isEmpty(permissionApi)) {
+                // 若没有注解定义，则使用请求路径
                 key = request.getRequestURI();
             } else {
                 key = permissionApi.value();
