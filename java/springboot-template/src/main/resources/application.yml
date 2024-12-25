@@ -46,7 +46,7 @@ mybatis-plus:
   global-config:
     # banner: false # 控制台的 Banner 打印
     db-config:
-      logic-delete-field: del_status  # 全局逻辑删除字段名
+      logic-delete-field: delStatus  # 全局逻辑删除字段名
       logic-delete-value: 1        # 逻辑已删除值 (默认为 1)
       logic-not-delete-value: 0    # 逻辑未删除值 (默认为 0)
 
