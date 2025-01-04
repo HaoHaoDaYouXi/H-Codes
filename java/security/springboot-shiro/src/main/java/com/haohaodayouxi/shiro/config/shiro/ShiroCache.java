@@ -68,6 +68,6 @@ public class ShiroCache implements Cache<String, Object> {
 
     @Override
     public Collection<Object> values() {
-        return commonRedisService.batchGetByKeys(new ArrayList<>(keys()), Object.class);
+        return commonRedisService.batchGetByKeys(new ArrayList<>(keys()), Object.class, false);
     }
 }

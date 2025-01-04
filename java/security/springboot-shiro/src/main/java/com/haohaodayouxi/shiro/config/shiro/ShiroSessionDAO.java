@@ -70,7 +70,7 @@ public class ShiroSessionDAO extends AbstractSessionDAO {
 
     @Override
     public Collection<Session> getActiveSessions() {
-        List<Session> data = commonRedisService.batchGetByKeys(Collections.singletonList(KEY_PREFIX + StringConstant.MATCHES_PATTERN), Session.class);
+        List<Session> data = commonRedisService.batchGetByKeys(Collections.singletonList(KEY_PREFIX + StringConstant.MATCHES_PATTERN), Session.class, false);
         if (ObjectUtils.isNotEmpty(data)) {
             return new HashSet<>(data);
         }
