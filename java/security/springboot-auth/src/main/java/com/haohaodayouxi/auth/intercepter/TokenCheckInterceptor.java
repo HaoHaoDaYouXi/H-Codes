@@ -1,10 +1,10 @@
 package com.haohaodayouxi.auth.intercepter;
 
 import com.haohaodayouxi.auth.config.SysAuthProperties;
+import com.haohaodayouxi.auth.model.bo.LoginCacheBO;
 import com.haohaodayouxi.common.core.constants.CurrentParam;
 import com.haohaodayouxi.common.core.constants.CurrentUserContextHolder;
 import com.haohaodayouxi.common.core.constants.InterceptorCode;
-import com.haohaodayouxi.common.core.model.bo.LoginCacheBO;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -50,7 +50,7 @@ public class TokenCheckInterceptor implements HandlerInterceptor {
         // 若有@TokenApi注解，或者是配置的token接口，则不需要获取 token，避免token接口循环获取token
         if (!CurrentParam.has(CurrentParam.TOKEN_API_KEY) && sysAuthProperties.getTokenUris().stream().noneMatch(url::equals)) {
             log.debug("需要获取token");
-            if (ObjectUtils.isNotEmpty(token)) { 
+            if (ObjectUtils.isNotEmpty(token)) {
                 // 调用接口判断token是否还在缓存内，并把缓存对象放入线程对象内
                 // 只通过缓存判断token是否还可以使用，用户的信息和权限在后续的校验中处理
                 // 如果要做token被删除，需要提示用户信息的，可以在此处做提示

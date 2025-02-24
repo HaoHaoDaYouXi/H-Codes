@@ -1,18 +1,17 @@
 package com.haohaodayouxi.auth2.filter;
 
+import com.haohaodayouxi.auth2.model.bo.LoginCacheBO;
 import com.haohaodayouxi.common.core.constants.CurrentParam;
 import com.haohaodayouxi.common.core.constants.CurrentUserContextHolder;
 import com.haohaodayouxi.common.core.constants.InterceptorCode;
-import com.haohaodayouxi.common.core.model.bo.LoginCacheBO;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.annotation.Order;
-import org.springframework.stereotype.Component;
-import org.springframework.web.filter.OncePerRequestFilter;
-
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
@@ -46,7 +45,7 @@ public class UserCheckFilter extends OncePerRequestFilter {
         // 根据认证状态，获取上一步已取出的用户信息，判断用户是否可访问
         // 2&4=0   4&4=4   6&4=4
         if ((authStatus & InterceptorCode.TOKEN) != 0) {
-            LoginCacheBO bo = CurrentUserContextHolder.get();
+            LoginCacheBO bo = (LoginCacheBO) CurrentUserContextHolder.get();
             // todo 用户不可访问时直接返回错误信息 此处根据不能访问的用户、角色、身份等等缓存进行判断，
             //  尽量不要涉及到数据库查询，统一通过缓存进行判断，缓存内提前记录不能访问的一些限制标志，用作此处判断
 //            if(用户不可访问) {

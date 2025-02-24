@@ -1,10 +1,10 @@
 package com.haohaodayouxi.auth2.filter;
 
 import com.haohaodayouxi.auth2.config.SysAuthProperties;
+import com.haohaodayouxi.auth2.model.bo.LoginCacheBO;
 import com.haohaodayouxi.common.core.constants.CurrentParam;
 import com.haohaodayouxi.common.core.constants.CurrentUserContextHolder;
 import com.haohaodayouxi.common.core.constants.InterceptorCode;
-import com.haohaodayouxi.common.core.model.bo.LoginCacheBO;
 import jakarta.annotation.Resource;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
