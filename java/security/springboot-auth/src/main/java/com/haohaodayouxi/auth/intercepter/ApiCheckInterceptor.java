@@ -12,6 +12,8 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
+import java.util.Objects;
+
 /**
  * Api访问权限拦截器
  *
@@ -36,12 +38,13 @@ public class ApiCheckInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         log.debug("ApiCheckInterceptor status={}", CurrentParam.get(CurrentParam.AUTH_STATUS_KEY));
-        // 1010 authStatus=10  公开接口，token无效，用户可访问
-        // 1100 authStatus=12  非公开接口，token有效，用户可访问
-        // 1110 authStatus=14  公开接口，token有效，用户可访问
+        // 10 authStatus=2   公开接口，token无效，无用户信息
+        // 110 authStatus=6  公开接口，token有效，用户信息不可用
+        // 1100 authStatus=12  非公开接口，token有效，用户信息可用
+        // 1110 authStatus=14  公开接口，token有效，用户信息可用
         Integer authStatus = (Integer) CurrentParam.get(CurrentParam.AUTH_STATUS_KEY);
-        // 10&12=8   12&12=12   14&12=12
-        if ((authStatus & InterceptorCode.USER_TOKEN) != InterceptorCode.USER_TOKEN) {
+        // 2&12=0  6&12=4  12&12=12  14&12=12
+        if (Objects.equals(authStatus, InterceptorCode.USER_TOKEN)) {
             // 检查用户的角色和菜单的关系
             String key;
             PermissionApi permissionApi = (PermissionApi) CurrentParam.get(CurrentParam.PERMISSION_API_KEY);
@@ -61,9 +64,10 @@ public class ApiCheckInterceptor implements HandlerInterceptor {
             }
         }
         CurrentParam.put(CurrentParam.AUTH_STATUS_KEY, authStatus | InterceptorCode.API);
-        // 11010 authStatus=26   公开接口，token无效，用户可访问，接口可以访问
-        // 11100 authStatus=28  非公开接口，token有效，用户可访问，接口可以访问
-        // 11110 authStatus=30  公开接口，token有效，用户可访问，接口可以访问
+        // 10010 authStatus=2   公开接口，token无效，无用户信息，接口可以访问
+        // 10110 authStatus=6  公开接口，token有效，用户信息不可用，接口可以访问
+        // 11100 authStatus=12  非公开接口，token有效，用户信息可用，接口可以访问
+        // 11110 authStatus=14  公开接口，token有效，用户信息可用，接口可以访问
         log.debug("ApiCheckInterceptor status={}", CurrentParam.get(CurrentParam.AUTH_STATUS_KEY));
         return true;
     }
