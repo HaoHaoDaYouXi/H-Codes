@@ -18,23 +18,7 @@
           :class="{ 'sub-menu-title-noDropdown': !isNest }"
         >
           <template v-if="hasOneShowingChild.meta?.title">
-            <template v-if="hasOneShowingChild.meta?.icon">
-              <i
-                v-if="iIcon(hasOneShowingChild.meta?.icon) != ''"
-                :class="iIcon(hasOneShowingChild.meta?.icon)"
-              />
-              <SvgIcon
-                v-else
-                :name="hasOneShowingChild.meta?.icon"
-                class="el-icon sub-el-icon"
-              />
-            </template>
-            <component
-              v-else-if="hasOneShowingChild.meta?.elIcon"
-              :is="hasOneShowingChild.meta?.elIcon"
-              class="el-icon sub-el-icon"
-            />
-            <i v-else class="round" />
+            <Icon :icon="hasOneShowingChild.meta?.icon" />
             <span>{{ hasOneShowingChild.meta?.title }}</span>
           </template>
         </el-menu-item>
@@ -48,22 +32,7 @@
       popper-append-to-body
     >
       <template v-if="props.item.meta?.title" #title>
-        <template v-if="props.item.meta?.icon">
-          <i
-            v-if="iIcon(props.item.meta?.icon) != ''"
-            :class="iIcon(props.item.meta?.icon)"
-          />
-          <SvgIcon
-            v-else
-            :name="props.item.meta?.icon"
-            class="el-icon sub-el-icon"
-          />
-        </template>
-        <component
-          v-if="props.item.meta?.elIcon"
-          :is="props.item.meta?.elIcon"
-          class="el-icon sub-el-icon"
-        />
+        <Icon :icon="props.item.meta?.icon" />
         <span>{{ props.item.meta?.title }}</span>
       </template>
       <template v-if="props.item.children && props.item.children?.length != 0">
@@ -84,6 +53,7 @@
 import { computed } from "vue"
 import { type RouteRecordRaw } from "vue-router"
 import SidebarItemLink from "./SidebarItemLink.vue"
+import Icon from "@/components/Icon/index.vue"
 import { isExternal } from "@/utils/validate"
 import path from "path-browserify"
 
@@ -148,27 +118,4 @@ const resolvePath = (routePath: string) => {
 </script>
 
 <style scoped>
-.round {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  border: 1px solid #7e828b;
-  margin-right: 14px;
-  margin-left: -12px;
-}
-.sub-el-icon {
-  width: 24px;
-  display: inline-block;
-  text-align: center;
-  color: currentColor;
-}
-.mr-8 {
-  margin-right: 8px;
-}
-.mr-5 {
-  margin-right: 5px;
-}
-.text-18 {
-  font-size: 18px;
-}
 </style>

@@ -19,9 +19,9 @@
         >
           <SidebarItemLink :to="resolvePath(item)">
             <el-menu-item v-if="!item.meta?.hidden" :index="item.path">
-              <i v-if="item.meta?.icon" :class="item.meta?.icon" />
-              <el-icon v-if="item.meta?.elIcon">
-                <component :is="item.meta?.elIcon" />
+              <i v-if="item.meta?.icon.includes('el-icon')" :class="item.meta?.icon" />
+              <el-icon v-else>
+                <component :is="item.meta?.icon" />
               </el-icon>
               <span>{{ item.meta?.title }}</span>
             </el-menu-item>

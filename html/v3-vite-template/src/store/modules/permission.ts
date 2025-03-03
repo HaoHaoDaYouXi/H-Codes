@@ -81,7 +81,7 @@ export const usePermissionStore = defineStore("permission", () => {
             disabled: 0,
             meta: {
               title: "表格",
-              elIcon: "Grid",
+              icon: "Grid",
               breadcrumb: true,
               alwaysShow: true
             },
@@ -95,7 +95,7 @@ export const usePermissionStore = defineStore("permission", () => {
                 disabled: 0,
                 meta: {
                   title: "Element Plus",
-                  elIcon: "List",
+                  icon: "List",
                   breadcrumb: true
                   // ,cachedView: true
                 },
