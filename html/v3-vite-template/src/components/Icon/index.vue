@@ -1,12 +1,13 @@
 <!-- icon 组件 -->
 <template>
   <template v-if="props.icon">
-    <template v-if="props.icon.includes('el-icon')">
-      <i v-if="iIcon(props.icon) != ''" :class="iIcon(props.icon)" />
-      <SvgIcon v-else :name="props.icon" class="el-icon sub-el-icon" />
+    <template v-if="props.icon.includes('el-icon') || props.icon.includes('svg-icon') || props.icon.includes('iconfont')">
+      <SvgIcon v-if="props.icon.includes('svg-icon')" :name="props.icon" class="el-icon sub-el-icon" />
+      <i v-else :class="props.icon.includes('el-icon')?props.icon+' el-icon sub-el-icon mr-8':props.icon+' el-icon sub-el-icon mr-5 text-18'" />
     </template>
     <component v-else :is="props.icon" class="el-icon sub-el-icon" />
   </template>
+  <i v-else class="round" />
   <i v-else class="round" />
 </template>
 
@@ -18,16 +19,6 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   icon: ""
 })
-
-const iIcon = (icon: string) => {
-  if (icon.includes("el-icon")) {
-    return icon + " el-icon sub-el-icon mr-8"
-  } else if (icon.includes("iconfont")) {
-    return icon + " el-icon sub-el-icon mr-5 text-18"
-  } else {
-    return ""
-  }
-}
 </script>
 
 <style lang="scss" scoped>
