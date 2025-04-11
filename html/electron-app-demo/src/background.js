@@ -1,6 +1,6 @@
 'use strict'
 
-import { app, protocol, BrowserWindow, screen, ipcMain } from 'electron'
+import { app, protocol, BrowserWindow, screen, ipcMain, Tray, Menu } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
 import path from 'path'
@@ -11,9 +11,12 @@ protocol.registerSchemesAsPrivileged([
   { scheme: 'app', privileges: { secure: true, standard: true } }
 ])
 
+let tray = null;
+let win = null;
+
 async function createWindow() {
   // Create the browser window.
-  const win = new BrowserWindow({
+  win = new BrowserWindow({
     width: 350,
     height: 230,
     resizable: false,
@@ -31,6 +34,20 @@ async function createWindow() {
       preload: path.join(__dirname, 'preload.js') // 预加载脚本
     }
   })
+
+  // 创建任务栏图标
+  tray = new Tray(path.join(__static, 'favicon.ico'));
+  const contextMenu = Menu.buildFromTemplate([
+    {
+      label: '退出',
+      click: () => {
+        app.isQuiting = true;
+        app.quit(); // 退出程序
+      }
+    }
+  ]);
+  tray.setToolTip('我的应用'); // 设置任务栏图标的提示文字
+  tray.setContextMenu(contextMenu); // 设置任务栏图标的右键菜单
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
@@ -61,6 +78,14 @@ async function createWindow() {
     } else if (y + height >= screenHeight && !isHidden) {
       win.setBounds({ x, y: screenHeight - 20, width, height: 20 });
       isHidden = true;
+    }
+  });
+
+  // 监听窗口关闭事件
+  win.on('close', (event) => {
+    if (!app.isQuiting) {
+      event.preventDefault(); // 阻止窗口关闭
+      win.hide(); // 隐藏窗口
     }
   });
 
