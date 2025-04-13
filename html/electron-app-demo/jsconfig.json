@@ -4,6 +4,7 @@
     "module": "esnext",
     "baseUrl": "./",
     "moduleResolution": "node",
+    "checkJs": false,
     "paths": {
       "@/*": [
         "src/*"
@@ -15,5 +16,10 @@
       "dom.iterable",
       "scripthost"
     ]
-  }
+  },
+  "include": [
+    "src/**/*.js",
+    "src/**/*.vue"
+  ],
+  "exclude": ["node_modules", "dist"]
 }

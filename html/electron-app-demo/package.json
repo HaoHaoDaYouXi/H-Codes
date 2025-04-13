@@ -1,45 +1,81 @@
 {
   "name": "electron-app-demo",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "author": "2601183227@qq.com",
+  "description": "electron-app-demo",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "electron:build": "vue-cli-service electron:build",
     "electron:serve": "vue-cli-service electron:serve",
+    "electron:build": "vue-cli-service electron:build",
+    "electron:build-all": "vue-cli-service electron:build -p never -mwl",
+    "electron:build-mac": "vue-cli-service electron:build -p never -m",
+    "electron:build-win": "vue-cli-service electron:build -p never -w",
+    "electron:build-linux": "vue-cli-service electron:build -p never -l",
     "postinstall": "electron-builder install-app-deps",
     "postuninstall": "electron-builder install-app-deps"
   },
   "main": "background.js",
+  "engines": {
+    "node": ">=14"
+  },
   "dependencies": {
+    "axios": "^0.26.1",
     "core-js": "^3.8.3",
-    "vue": "^2.6.14"
+    "electron": "^13.6.7",
+    "electron-builder": "^23.0.0",
+    "electron-context-menu": "^3.1.2",
+    "electron-debug": "^3.1.0",
+    "electron-devtools-installer": "^3.2",
+    "electron-icon-builder": "^2.0.1",
+    "electron-is-dev": "^2.0.0",
+    "electron-log": "^4.3.0",
+    "electron-store": "^8.0.1",
+    "electron-updater": "^5.0.1",
+    "js-cookie": "^2.2.1",
+    "lodash": "^4.17.20",
+    "vue": "^2.6.14",
+    "vue-router": "^3.4.3",
+    "vuex": "^3.4.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.16",
-    "@babel/eslint-parser": "^7.12.16",
+    "@types/node": "^17.0.0",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-plugin-pwa": "~5.0.0",
+    "@vue/cli-plugin-vuex": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
-    "electron": "^28.1.0",
-    "electron-devtools-installer": "^3.1.0",
+    "babel-eslint": "^10.1.0",
     "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^8.0.3",
+    "prettier": "2.5.1",
+    "sass": "^1.26.11",
+    "sass-loader": "^10.0.2",
     "vue-cli-plugin-electron-builder": "~2.1.1",
     "vue-template-compiler": "^2.6.14"
   },
   "eslintConfig": {
     "root": true,
     "env": {
-      "node": true
+      "browser": true,
+      "node": true,
+      "es6": true
     },
     "extends": [
       "plugin:vue/essential",
+      "plugin:vue/recommended",
+      "plugin:prettier/recommended",
       "eslint:recommended"
     ],
     "parserOptions": {
-      "parser": "@babel/eslint-parser"
+      "parser": "babel-eslint"
+    },
+    "globals": {
+      "ipcRenderer": "off"
     },
     "rules": {}
   },
@@ -47,5 +83,6 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "license": "MIT"
 }

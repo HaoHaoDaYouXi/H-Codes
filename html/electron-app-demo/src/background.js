@@ -4,6 +4,7 @@ import { app, protocol, BrowserWindow, screen, ipcMain, Tray, Menu } from 'elect
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
 import path from 'path'
+
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
 // Scheme must be registered before the app is ready
@@ -14,28 +15,7 @@ protocol.registerSchemesAsPrivileged([
 let tray = null;
 let win = null;
 
-async function createWindow() {
-  // Create the browser window.
-  win = new BrowserWindow({
-    width: 350,
-    height: 230,
-    resizable: false,
-    maximizable: false,
-    fullscreen: false,
-    autoHideMenuBar: true,
-    alwaysOnTop: true,
-    icon: path.join(__static, 'favicon.ico'),
-
-    webPreferences: {
-      // Use pluginOptions.nodeIntegration, leave this alone
-      // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
-      nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION,
-      contextIsolation: !process.env.ELECTRON_NODE_INTEGRATION,
-      preload: path.join(__dirname, 'preload.js'), // 预加载脚本
-      contextMenu: false,
-    }
-  })
-
+function createTray() {
   // 创建任务栏图标
   tray = new Tray(path.join(__static, 'favicon.ico'));
   const contextMenu = Menu.buildFromTemplate([
@@ -55,6 +35,37 @@ async function createWindow() {
   ]);
   tray.setToolTip('我的应用'); // 设置任务栏图标的提示文字
   tray.setContextMenu(contextMenu); // 设置任务栏图标的右键菜单
+}
+
+async function createWindow() {
+  // Create the browser window.
+  win = new BrowserWindow({
+    width: 350,
+    height: 230,
+    resizable: false,
+    maximizable: false,
+    fullscreen: false,
+    autoHideMenuBar: true,
+    alwaysOnTop: true,
+    icon: path.join(__static, 'favicon.ico'),
+    frame: false,
+
+    webPreferences: {
+      spellcheck: false, // 禁用拼写检查器
+      disableBlinkFeatures: "SourceMap", // 以 "," 分隔的禁用特性列表
+      devTools: true, // 是否开启 DevTools, 如果设置为 false（默认值为 true）, 则无法使用 BrowserWindow.webContents.openDevTools()
+      webSecurity: false, // 当设置为 false, 将禁用同源策略
+      nodeIntegration: false, // 是否启用 Node 集成
+      contextIsolation: true, // 是否在独立 JavaScript 环境中运行 Electron API 和指定的 preload 脚本，默认为 true
+      backgroundThrottling: false, // 是否在页面成为背景时限制动画和计时器，默认值为 true
+      nodeIntegrationInWorker: true, // 是否在 Web 工作器中启用了 Node 集成
+
+      preload: path.join(__dirname, 'preload.js'), // 预加载脚本
+    }
+  })
+  console.log("__dirname",__dirname)
+
+  createTray()
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
@@ -90,6 +101,7 @@ async function createWindow() {
 
   // 监听窗口关闭事件
   win.on('close', (event) => {
+    console.log('close-window')
     if (!app.isQuiting) {
       event.preventDefault(); // 阻止窗口关闭
       win.hide(); // 隐藏窗口
@@ -98,6 +110,7 @@ async function createWindow() {
 
   // 监听渲染进程的消息，恢复窗口
   ipcMain.on('restore-window', (event, { screenX }) => {
+    console.log('restore-window')
     if (isHidden) {
       const { width: screenWidth } = screen.getPrimaryDisplay().workAreaSize;
       const { x, y, width, height } = originalBounds;
@@ -109,6 +122,16 @@ async function createWindow() {
       }
       isHidden = false;
     }
+  });
+
+  ipcMain.on('minimize-window', () => {
+    console.log('minimize-window')
+    win.minimize();
+  });
+
+  ipcMain.on('close-window', () => {
+    console.log('close-window')
+    win.hide(); // 隐藏窗口
   });
 
   // 监听鼠标移动

@@ -1,0 +1,10 @@
+# Prettier 忽略的文件
+build
+coverage
+.vscode
+.DS_Store
+node_modules
+dist
+dist-ssr
+*.local
+.npmrc
