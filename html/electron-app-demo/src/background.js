@@ -24,20 +24,27 @@ async function createWindow() {
     fullscreen: false,
     autoHideMenuBar: true,
     alwaysOnTop: true,
+    icon: path.join(__static, 'favicon.ico'),
 
     webPreferences: {
-      
       // Use pluginOptions.nodeIntegration, leave this alone
       // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
       nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION,
       contextIsolation: !process.env.ELECTRON_NODE_INTEGRATION,
-      preload: path.join(__dirname, 'preload.js') // 预加载脚本
+      preload: path.join(__dirname, 'preload.js'), // 预加载脚本
+      contextMenu: false,
     }
   })
 
   // 创建任务栏图标
   tray = new Tray(path.join(__static, 'favicon.ico'));
   const contextMenu = Menu.buildFromTemplate([
+    {
+      label: '显示窗口',
+      click: () => {
+        win.show();
+      }
+    },
     {
       label: '退出',
       click: () => {

@@ -4,11 +4,6 @@ module.exports = {
     node: true,
     browser: true
   },
-  parserOptions: {
-    // ecmaVersion: 7,
-    // sourceType: "module",
-    parser: "babel-eslint"
-  },
   extends: [
     'plugin:vue/essential'
   ],
