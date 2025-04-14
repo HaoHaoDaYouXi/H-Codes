@@ -1,0 +1,120 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "./mixin.scss";
+@import "./variables.module.scss";
+@import "./public.scss";
+@import './topbar.scss';
+@import './sidebar.scss';
+@import './transition.scss';
+@import './element-plus.scss';
+
+:root {
+  --topbar-height: 68px;
+  --tag-view-height: 36px;
+  --tag-view-border-bottom: 1px;
+  --navbar-height: 38px;
+  --sidebar-width: 228px;
+  --hiden-sidebar-width: 54px;
+  --sidebar-padding-left-right: 11px;
+  --sidebar-content-height: calc(100vh - var(--topbar-height));
+  /* 143 = top-nav + tag-view + navbar 68 + 36 + 1 + 38 */
+  --app-main-paddingT: calc(var(--topbar-height) + var(--tag-view-height) + var(--tag-view-border-bottom) + var(--navbar-height));
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: PingFang SC,Microsoft YaHei, Arial, Helvetica Neue, Helvetica, Hiragino Sans GB, sans-serif;
+}
+
+/** 内容区放大时，将不需要的组件隐藏 */
+body.content-large {
+  --topbar-height: 0px;
+  --sidebar-width: 0px;
+  //--hiden-sidebar-width: 0px;
+  --sidebar-padding-left-right: 0px;
+  --app-main-paddingT: calc(var(--tag-view-height) + var(--tag-view-border-bottom) + var(--navbar-height));
+}
+
+/** 内容区全屏时，将不需要的组件隐藏 */
+body.content-full {
+  --topbar-height: 0px;
+  --tag-view-height: 0px;
+  --tag-view-border-bottom: 0px;
+  --sidebar-width: 0px;
+  --hiden-sidebar-width: 0px;
+  --sidebar-padding-left-right: 0px;
+  --app-main-paddingT: calc(var(--navbar-height));
+}
+
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+}
+
+label {
+  font-weight: 400;
+}
+
+textarea {
+  outline: none;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+#app {
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+a:focus,
+a:active,
+button:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+div:focus {
+  outline: none;
+}
+
+ul, li, ol {
+  list-style: none;
+}
+
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}

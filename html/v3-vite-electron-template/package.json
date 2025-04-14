@@ -1,0 +1,136 @@
+{
+  "name": "v3-vite-electron-template",
+  "private": true,
+  "version": "1.0.0",
+  "description": "模板项目",
+  "type": "module",
+  "author": {
+    "name": "HaoHaoDaYouXi",
+    "email": "2601183227@qq.com",
+    "url": "https://github.com/HaoHaoDaYouXi"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build && electron-builder",
+    "build:dir": "vite build && electron-builder --dir",
+    "build:linux": "vite build && electron-builder --linux",
+    "build:macos": "vite build && electron-builder --macos",
+    "build:win-x64": "vite build && electron-builder --win --x64",
+    "build:win-x32": "vite build && electron-builder --win --ia32",
+    "preview": "vite preview",
+    "test": "vitest"
+  },
+  "build": {
+    "productName": "${name}",
+    "appId": "com.app.${name}",
+    "directories": {
+      "output": "release/v${version}-${platform}"
+    },
+    "files": [
+      "dist/**/*",
+      "public/**/*"
+    ],
+    "extraResources": [],
+    "publish": [
+      {
+        "provider": "generic",
+        "url": ""
+      }
+    ],
+    "asar": true,
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "shortcutName": "${productName}",
+      "uninstallDisplayName": "${productName}",
+      "runAfterFinish": true,
+      "deleteAppDataOnUninstall": true,
+      "allowToChangeInstallationDirectory": true
+    },
+    "win": {
+      "icon": "public/vite.svg",
+      "artifactName": "${productName} v${version} ${arch}.${ext}",
+      "requestedExecutionLevel": "requireAdministrator"
+    },
+    "dmg": {
+      "sign": false
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "icon": "public/vite.svg",
+      "artifactName": "${productName} v${version} MacOS ${arch}.${ext}",
+      "identity": null,
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "icon": "public/vite.svg",
+      "artifactName": "${productName} v${version} ${platform} ${arch}.${ext}",
+      "desktop": {
+        "Icon": "/opt/v3-electron-vite/resources/app/public/vite.svg"
+      }
+    }
+  },
+  "dependencies": {
+    "@electron/remote": "2.1.2",
+    "axios": "1.7.7",
+    "dayjs": "1.11.13",
+    "electron-log": "5.1.5",
+    "element-plus": "2.8.2",
+    "js-cookie": "3.0.5",
+    "lodash-es": "4.17.21",
+    "mitt": "3.0.1",
+    "normalize.css": "8.0.1",
+    "nprogress": "0.2.0",
+    "path-browserify": "1.0.1",
+    "path-to-regexp": "7.1.0",
+    "pinia": "2.2.2",
+    "screenfull": "6.0.2",
+    "vue": "3.4.38",
+    "vue-i18n": "10.0.1",
+    "vue-router": "4.4.3",
+    "vxe-table": "4.6.18",
+    "vxe-table-plugin-element": "4.0.4",
+    "xe-utils": "3.5.30"
+  },
+  "devDependencies": {
+    "@types/js-cookie": "^3.0.6",
+    "@types/lodash-es": "4.17.12",
+    "@types/node": "22.5.4",
+    "@types/nprogress": "0.2.3",
+    "@types/path-browserify": "1.0.3",
+    "@typescript-eslint/eslint-plugin": "8.2.0",
+    "@typescript-eslint/parser": "8.2.0",
+    "@vitejs/plugin-vue": "5.1.2",
+    "@vitejs/plugin-vue-jsx": "4.0.1",
+    "@vue/eslint-config-prettier": "9.0.0",
+    "@vue/eslint-config-typescript": "13.0.0",
+    "@vue/test-utils": "2.4.6",
+    "electron": "31.0.1",
+    "electron-builder": "24.13.3",
+    "eslint": "8.57.0",
+    "eslint-plugin-prettier": "5.2.1",
+    "eslint-plugin-vue": "9.27.0",
+    "husky": "9.1.5",
+    "jsdom": "24.1.1",
+    "lint-staged": "15.2.9",
+    "prettier": "3.3.3",
+    "sass": "1.77.8",
+    "typescript": "5.5.4",
+    "unocss": "0.62.2",
+    "vite": "5.4.2",
+    "vite-electron-plugin": "0.8.3",
+    "vite-plugin-svg-icons": "2.0.1",
+    "vite-svg-loader": "5.1.0",
+    "vitest": "2.0.5",
+    "vue-eslint-parser": "9.4.3",
+    "vue-tsc": "2.0.29"
+  }
+}

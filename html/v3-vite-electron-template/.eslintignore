@@ -1,0 +1,9 @@
+# Eslint 忽略的文件
+
+.vscode
+.DS_Store
+node_modules
+dist
+dist-ssr
+*.local
+.npmrc
