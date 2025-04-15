@@ -8,6 +8,7 @@ import UnoCSS from "unocss/vite"
 import electron from "vite-electron-plugin"
 import { loadViteEnv } from "vite-electron-plugin/plugin"
 import { rmSync } from "fs"
+import pkg from "./package.json"
 
 /** 清空 dist */
 rmSync("dist", { recursive: true, force: true })
@@ -22,14 +23,14 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
     resolve: {
       alias: {
         /** @ 符号指向 src 目录 */
-        "@": resolve(__dirname, "src")
+        "@": resolve(__dirname, "./src")
       }
     },
     server: {
       /** 设置 host: true 才可以使用 Network 的形式，以 IP 访问项目 */
-      host: true, // host: "0.0.0.0"
+      host: pkg.env.host, // host: "0.0.0.0"
       /** 端口号 */
-      port: 9999,
+      port: pkg.env.port,
       /** 是否自动打开浏览器 */
       open: false,
       /** 跨域设置允许 */
@@ -56,7 +57,7 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
       /** 禁用 gzip 压缩大小报告 */
       reportCompressedSize: false,
       /** 打包后静态资源目录 */
-      assetsDir: "static",
+      assetsDir: "public",
       rollupOptions: {
         output: {
           /**
@@ -121,6 +122,7 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
         ]
       })
     ],
+    clearScreen: false,
     /** Vitest 单元测试配置：https://cn.vitest.dev/config */
     test: {
       include: ["tests/**/*.test.ts"],

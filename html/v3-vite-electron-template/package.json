@@ -3,21 +3,32 @@
   "private": true,
   "version": "1.0.0",
   "description": "模板项目",
-  "type": "module",
   "author": {
     "name": "HaoHaoDaYouXi",
     "email": "2601183227@qq.com",
     "url": "https://github.com/HaoHaoDaYouXi"
   },
+  "main": "dist/index.js",
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=7.0.0"
+  },
+  "env": {
+    "host": "127.0.0.1",
+    "port": 9999
+  },
   "scripts": {
+    "clean": "rimraf dist release",
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build && electron-builder",
-    "build:dir": "vite build && electron-builder --dir",
-    "build:linux": "vite build && electron-builder --linux",
-    "build:macos": "vite build && electron-builder --macos",
-    "build:win-x64": "vite build && electron-builder --win --x64",
-    "build:win-x32": "vite build && electron-builder --win --ia32",
+    "build": "npm run clean && vue-tsc --noEmit && vite build && electron-builder",
+    "build:dir": "npm run clean && vite build && electron-builder --dir",
+    "build:linux": "npm run clean && vite build && electron-builder --linux",
+    "build:macos": "npm run clean && vite build && electron-builder --macos",
+    "build:win-x64": "npm run clean && vite build && electron-builder --win --x64",
+    "build:win-x32": "npm run clean && vite build && electron-builder --win --ia32",
     "preview": "vite preview",
+    "lint": "eslint . --ext .vue,.js,.ts --fix",
+    "format": "prettier --write .",
     "test": "vitest"
   },
   "build": {
@@ -48,7 +59,7 @@
       "allowToChangeInstallationDirectory": true
     },
     "win": {
-      "icon": "public/vite.svg",
+      "icon": "public/logo_256x256.ico",
       "artifactName": "${productName} v${version} ${arch}.${ext}",
       "requestedExecutionLevel": "requireAdministrator"
     },
@@ -60,7 +71,7 @@
         "dmg",
         "zip"
       ],
-      "icon": "public/vite.svg",
+      "icon": "public/logo_256x256.icns",
       "artifactName": "${productName} v${version} MacOS ${arch}.${ext}",
       "identity": null,
       "hardenedRuntime": true,
@@ -71,7 +82,7 @@
         "AppImage",
         "deb"
       ],
-      "icon": "public/vite.svg",
+      "icon": "public/logo_256x256.png",
       "artifactName": "${productName} v${version} ${platform} ${arch}.${ext}",
       "desktop": {
         "Icon": "/opt/v3-electron-vite/resources/app/public/vite.svg"
@@ -132,5 +143,17 @@
     "vitest": "2.0.5",
     "vue-eslint-parser": "9.4.3",
     "vue-tsc": "2.0.29"
+  },
+  "lint-staged": {
+    "*.{vue,js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{css,less,scss,html,md}": [
+      "prettier --write"
+    ],
+    "package.json": [
+      "prettier --write"
+    ]
   }
 }

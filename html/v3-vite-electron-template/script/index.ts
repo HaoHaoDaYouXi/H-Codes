@@ -5,6 +5,7 @@ process.env["ELECTRON_DISABLE_SECURITY_WARNINGS"] = "false"
 
 /** 必要的全局错误捕获 */
 process.on("uncaughtException", (error: Error) => {
+  // console.log("uncaughtException", error)
   WinApp.exitApp("异常捕获", error.message || error.stack)
 })
 

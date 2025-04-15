@@ -6,7 +6,6 @@ import { app, screen, BrowserWindow } from "electron"
 import PKG from "../../package.json"
 
 class GlobalConfig {
-  //#region 只读属性
 
   /** 是否为 Windows 平台 */
   static readonly IS_WIN32 = process.platform === "win32"
@@ -28,7 +27,7 @@ class GlobalConfig {
    */
   static readonly DIR_APP = app.getAppPath()
   /** 静态资源目录 */
-  static readonly DIR_STATIC = NodePath.resolve(this.DIR_APP, "static")
+  static readonly DIR_STATIC = NodePath.resolve(this.DIR_APP, "public")
   /** 存放资源文件的目录 */
   static readonly DIR_RESOURCES = NodePath.resolve(this.DIR_APP, this.IS_DEV_MODE ? "" : "..")
   /** 根目录/安装目录 */
@@ -47,9 +46,9 @@ class GlobalConfig {
   /** 程序图标 */
   static getAppLogo(isDocker?: boolean) {
     const logoList = {
-      win32: "icons/logo_256x256.ico",
-      darwin: "icons/logo_256x256.icns",
-      linux: "icons/logo_256x256.png"
+      win32: "logo_256x256.ico",
+      darwin: "logo_256x256.icns",
+      linux: "logo_256x256.png"
     }
     const type = isDocker ? "linux" : process.platform
     return NodePath.join(this.DIR_STATIC, logoList[type])
