@@ -22,8 +22,8 @@ class WinMain {
     hasShadow: false, // 窗口是否有阴影. 默认值为 true
     resizable: true, // 是否允许拉伸大小
     maximizable: true, // 是否允许最大化
-    alwaysOnTop: true, // 是否置顶
-    fullscreen: true, // 是否允许全屏
+    alwaysOnTop: false, // 是否置顶
+    fullscreen: false, // 是否全屏
     fullscreenable: true, // 是否允许全屏，为 false 则插件 screenfull 不起作用
     autoHideMenuBar: true, // 自动隐藏菜单栏, 除非按了 Alt 键, 默认值为 false
     backgroundColor: "#fff", // 背景颜色
@@ -75,6 +75,28 @@ class WinMain {
       GlobalConfig.IS_DEV_MODE && this.openDevTools()
     })
 
+    let isHidden = false
+    let originalBounds = this.WIN_INST.getBounds()
+    // 窗口移动事件
+    this.WIN_INST.on("move", () => {
+      const { x, y, width, height } = this.WIN_INST.getBounds()
+      const { width: screenWidth, height: screenHeight } = screen.getPrimaryDisplay().workAreaSize;
+
+      if (x <= 0 && !isHidden) {
+        this.WIN_INST.setBounds({ x: 0, y, width: 15, height })
+        isHidden = true
+      } else if (x + width >= screenWidth && !isHidden) {
+        this.WIN_INST.setBounds({ x: screenWidth - 15, y, width: 15, height })
+        isHidden = true
+      } else if (y <= 0 && !isHidden) {
+        this.WIN_INST.setBounds({ x, y: 0, width, height: 15 })
+        isHidden = true
+      } else if (y + height >= screenHeight && !isHidden) {
+        this.WIN_INST.setBounds({ x, y: screenHeight - 15, width, height: 15 })
+        isHidden = true
+      }
+    })
+
     // 窗口-即将关闭
     this.WIN_INST.on("close", () => {})
 
@@ -114,7 +136,7 @@ class WinMain {
       this.WIN_INST.setResizable(true)
       this.WIN_INST.setSize(size.width, size.height)
       dto.center && this.WIN_INST.center()
-      this.WIN_INST.setMaximizable(dto.maxable)
+      this.WIN_INST.setMaximizable(dto.maximizable)
       this.WIN_INST.setResizable(dto.resizable)
     })
   }
