@@ -18,7 +18,7 @@ onMounted(() => {
     width: 1440,
     height: 900,
     center: true,
-    maxable: true,
+    maximizable: true,
     resizable: true
   }
   ipcRenderer.send("set_win_size", winState)
