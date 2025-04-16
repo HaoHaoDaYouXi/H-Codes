@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <el-config-provider
-      :locale="elLocaleMap[useLocaleStoreHook().defaultLocale]"
-    >
+    <el-config-provider :locale="elLocaleMap[useLocaleStoreHook().defaultLocale]">
       <router-view />
     </el-config-provider>
   </div>

@@ -19,7 +19,7 @@
   },
   "scripts": {
     "clean": "rimraf dist release",
-    "dev": "vite",
+    "dev": "chcp 65001 && vite",
     "build": "npm run clean && vue-tsc --noEmit && vite build && electron-builder",
     "build:dir": "npm run clean && vite build && electron-builder --dir",
     "build:linux": "npm run clean && vite build && electron-builder --linux",
