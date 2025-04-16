@@ -32,8 +32,8 @@
     "test": "vitest"
   },
   "build": {
-    "productName": "${name}",
-    "appId": "com.app.${name}",
+    "productName": "template",
+    "appId": "com.app.template",
     "directories": {
       "output": "release/v${version}-${platform}"
     },
