@@ -21,6 +21,9 @@ class WinMain {
     center: true, // 是否在屏幕居中
     hasShadow: false, // 窗口是否有阴影. 默认值为 true
     resizable: true, // 是否允许拉伸大小
+    maximizable: true, // 是否允许最大化
+    alwaysOnTop: true, // 是否置顶
+    fullscreen: true, // 是否允许全屏
     fullscreenable: true, // 是否允许全屏，为 false 则插件 screenfull 不起作用
     autoHideMenuBar: true, // 自动隐藏菜单栏, 除非按了 Alt 键, 默认值为 false
     backgroundColor: "#fff", // 背景颜色
