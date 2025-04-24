@@ -1,9 +1,10 @@
 import router from "@/router"
+import { useUserStoreHook } from "@/store/modules/user"
+import { usePermissionStoreHook } from "@/store/modules/permission"
+import { ElMessage } from "element-plus"
 import { setRouteChange } from "@/hooks/useRouteListener"
 import { getToken } from "@/utils/cache/cookies"
 import isWhiteList from "@/config/white-list"
-import { useUserStoreHook } from "@/store/modules/user"
-import { usePermissionStoreHook } from "@/store/modules/permission"
 import NProgress from "nprogress"
 import "nprogress/nprogress.css"
 
@@ -11,6 +12,8 @@ NProgress.configure({ showSpinner: false })
 
 router.beforeEach(async (to, _from, next) => {
   NProgress.start()
+  const userStore = useUserStoreHook()
+  const permissionStore = usePermissionStoreHook()
   const token = getToken()
   // console.log("token: "+token)
   console.log(to.path)
@@ -27,15 +30,13 @@ router.beforeEach(async (to, _from, next) => {
     return next({ path: "/" })
   }
 
-  const userStore = useUserStoreHook()
   // 用户信息是否存在
-  if (!userStore.user_info.userName) {
-    await userStore.getUserInfo()
-  }
+  if (!userStore.user_info.userName) await userStore.getUserInfo()
 
-  const permissionStore = usePermissionStoreHook()
   // 路由信息是否获取并添加过
-  if (!permissionStore.booAddRoutes) {
+  if (permissionStore.booAddRoutes) return next()
+
+  try {
     await permissionStore.getRouterByUser()
     permissionStore.addRouter.forEach((route) => router.addRoute(route))
     permissionStore.booAddRoutes = true
@@ -44,9 +45,12 @@ router.beforeEach(async (to, _from, next) => {
     } else {
       return next({ ...to, replace: true })
     }
-    // return next({ ...to, replace: true })
+  } catch (err: any) {
+    // 过程中发生任何错误，都直接重置 Token，并重定向到登录页面
+    userStore.resetState()
+    ElMessage.error(err.message || "路由守卫过程发生错误")
+    next("/login")
   }
-  return next()
 })
 
 router.afterEach((to) => {
