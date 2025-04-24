@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <el-config-provider
-      :locale="elLocaleMap[useLocaleStoreHook().defaultLocale]"
-    >
+    <el-config-provider :locale="elLocaleMap[useLocaleStoreHook().defaultLocale]">
       <router-view />
     </el-config-provider>
   </div>
@@ -18,7 +16,7 @@ onMounted(() => {
     width: 1440,
     height: 900,
     center: true,
-    maxable: true,
+    maximizable: true,
     resizable: true
   }
   ipcRenderer.send("set_win_size", winState)

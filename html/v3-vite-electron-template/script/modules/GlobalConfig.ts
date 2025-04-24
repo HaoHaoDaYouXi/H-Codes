@@ -6,7 +6,6 @@ import { app, screen, BrowserWindow } from "electron"
 import PKG from "../../package.json"
 
 class GlobalConfig {
-
   /** 是否为 Windows 平台 */
   static readonly IS_WIN32 = process.platform === "win32"
   /** 是否为 macOS 平台 */

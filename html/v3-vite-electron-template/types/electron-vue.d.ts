@@ -3,6 +3,6 @@ interface WinStateDTO {
   width: number
   height: number
   center: boolean
-  maxable: boolean
+  maximizable: boolean
   resizable: boolean
 }
