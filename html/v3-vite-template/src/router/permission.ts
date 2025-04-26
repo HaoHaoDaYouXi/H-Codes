@@ -16,7 +16,7 @@ router.beforeEach(async (to, _from, next) => {
   const permissionStore = usePermissionStoreHook()
   const token = getToken()
   // console.log("token: "+token)
-  console.log(to.path)
+  // console.log(to.path)
   const loginUrl = "/login"
   // 如果没有登陆
   if (!token) {
@@ -30,7 +30,7 @@ router.beforeEach(async (to, _from, next) => {
   if (to.path === loginUrl) return next({ path: "/" })
 
   // 用户信息是否存在
-  if (!userStore.user_info.userName) await userStore.getUserInfo()
+  if (!userStore.userInfo.userName) await userStore.getUserInfo()
 
   // 路由信息是否获取并添加过
   if (permissionStore.booAddRoutes) return next()

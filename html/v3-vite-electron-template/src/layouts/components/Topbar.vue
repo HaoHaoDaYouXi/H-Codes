@@ -41,16 +41,16 @@
         >
           <!-- 用户头像 -->
           <div class="avatar-wrapper pr-4">
-            <img class="user-avatar" :src="user_info.avatar" alt="" />
-            <span>{{ user_info.userName }}</span>
+            <img class="user-avatar" :src="userInfo.avatar" alt="" />
+            <span>{{ userInfo.userName }}</span>
             <i class="el-icon-arrow-down" />
           </div>
           <template v-slot:dropdown>
             <el-dropdown-menu style="min-width: 270px; padding: 0">
               <el-dropdown-item class="top-nav-user-box">
-                <p class="top-nav-user-name">{{ user_info.userName }}</p>
+                <p class="top-nav-user-name">{{ userInfo.userName }}</p>
                 <div class="top-nav-user-roles">
-                  <p>{{ user_info.roleName }}</p>
+                  <p>{{ userInfo.roleName }}</p>
                   <!-- 按钮：角色选择 -->
                   <i
                     class="iconfont icon-jiantou_zuoyouqiehuan"
@@ -64,7 +64,7 @@
                   class="hover-focus-cancel"
                   v-for="item in userStore.roleList"
                   :key="item.value"
-                  :disabled="item.value === user_info.roleId"
+                  :disabled="item.value === userInfo.roleId"
                 >
                   <span class="fs-14" @click="handleRoleSelect(item.value)">
                     {{ item.label }}
@@ -136,10 +136,10 @@ const permission_routes = computed(() => {
   return permissionStore.routes.filter((route) => !route.meta?.hidden)
 })
 
-const user_info = computed(() => {
+const userInfo = computed(() => {
   return {
-    ...userStore.user_info,
-    avatar: new URL(userStore.user_info.avatar, import.meta.url).href
+    ...userStore.userInfo,
+    avatar: new URL(userStore.userInfo.avatar, import.meta.url).href
   }
 })
 

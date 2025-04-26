@@ -13,7 +13,7 @@ import { type UserInfoData } from "@/api/user/types/user"
 
 export const useUserStore = defineStore("user", () => {
   const token = ref<string>(getToken() || "")
-  const user_info: UserInfoData = reactive({
+  const userInfo: UserInfoData = reactive({
     userName: "",
     avatar: "",
     roleId: 0,
@@ -21,10 +21,10 @@ export const useUserStore = defineStore("user", () => {
   })
   /** 设置用户信息 */
   const setUserInfo = (userInfo: UserInfoData) => {
-    user_info.userName = userInfo.userName || ""
-    user_info.avatar = userInfo.avatar || ""
-    user_info.roleId = userInfo.roleId || 0
-    user_info.roleName = userInfo.roleName || ""
+    userInfo.userName = userInfo.userName || ""
+    userInfo.avatar = userInfo.avatar || ""
+    userInfo.roleId = userInfo.roleId || 0
+    userInfo.roleName = userInfo.roleName || ""
   }
   /** 重置状态 */
   const resetState = () => {
@@ -89,14 +89,14 @@ export const useUserStore = defineStore("user", () => {
   const changeRole = async (roleId: number) => {
     roleList.forEach((r) => {
       if (r.value === roleId) {
-        user_info.roleId = r.value
-        user_info.roleName = r.label
+        userInfo.roleId = r.value
+        userInfo.roleName = r.label
         return
       }
     })
   }
 
-  return { token, user_info, login, getUserInfo, logout, roleList, changeRole }
+  return { token, userInfo, login, getUserInfo, logout, roleList, changeRole }
 })
 
 /** 在 setup 外使用 */
