@@ -68,10 +68,12 @@ module.exports = {
     "prettier/prettier": [
       "error",
       {
-        "htmlWhitespaceSensitivity": "ignore",
-        "trailingComma": "none",
-        "semi": false,
-        "endOfLine": "auto"
+        printWidth: 120, // 每行代码的最大宽度为 120 个字符
+        proseWrap: "never", // 禁止自动换行（适用于 Markdown 等文本）
+        htmlWhitespaceSensitivity: "ignore", // 忽略 HTML 中的空白符敏感度
+        trailingComma: "none", // 不添加尾随逗号
+        semi: false, // 不自动添加分号
+        endOfLine: "auto" // 自动检测换行符（LF 或 CRLF）
       }
     ]
   }
