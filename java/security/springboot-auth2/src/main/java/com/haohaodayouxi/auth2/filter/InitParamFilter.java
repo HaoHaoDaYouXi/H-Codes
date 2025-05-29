@@ -1,5 +1,6 @@
 package com.haohaodayouxi.auth2.filter;
 
+import com.haohaodayouxi.auth2.config.SysAuthProperties;
 import com.haohaodayouxi.common.core.annotation.OpenApi;
 import com.haohaodayouxi.common.core.annotation.TokenApi;
 import com.haohaodayouxi.common.core.annotation.WhiteApi;
@@ -7,6 +8,7 @@ import com.haohaodayouxi.common.core.constants.CurrentParam;
 import com.haohaodayouxi.common.core.constants.InterceptorCode;
 import com.haohaodayouxi.common.util.business.TokenUtil;
 import jakarta.annotation.PostConstruct;
+import jakarta.annotation.Resource;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -36,6 +38,8 @@ import java.lang.reflect.Method;
 @Order(1)
 @Component
 public class InitParamFilter extends OncePerRequestFilter {
+    @Resource
+    private SysAuthProperties sysAuthProperties;
 
     private HandlerMapping handlerMapping;
 
@@ -61,8 +65,21 @@ public class InitParamFilter extends OncePerRequestFilter {
             // 根据请求获取 handler链
             HandlerExecutionChain executionChain = handlerMapping.getHandler(request);
             if (executionChain != null) {
+                // 如果不是 HandlerMethod
+                if (!(executionChain.getHandler() instanceof HandlerMethod handlerMethod)) {
+                    log.debug("非 HandlerMethod：{}", request.getRequestURI());
+                    // 如果是静态资源，直接放行
+                    if (sysAuthProperties.getStaticUris().stream().anyMatch(uri -> request.getRequestURI().startsWith(uri))) {
+                        log.debug("静态资源");
+                        CurrentParam.put(CurrentParam.AUTH_STATUS_KEY, InterceptorCode.OPEN);
+                        return;
+                    } else {
+                        log.debug("非静态资源");
+                        InterceptorErrorResponse.responseErrorByCode(response, InterceptorCode.UN_OPEN);
+                        return;
+                    }
+                }
                 // 获取注解类，并将其装入CurrentParam
-                HandlerMethod handlerMethod = (HandlerMethod) executionChain.getHandler();
                 // 获取类注解
                 Class<?> clazz = handlerMethod.getBeanType();
                 Annotation[] classAnnotations = clazz.getAnnotations();

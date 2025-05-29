@@ -22,6 +22,11 @@ public class SysAuthProperties implements Serializable {
     @Serial
     private static final long serialVersionUID = -7218460583434903529L;
     /**
+     * 静态资源路径，包含就认为是静态资源
+     */
+    @Value("${h.sys.auth.staticUris:/static/}")
+    private List<String> staticUris;
+    /**
      * 开放的接口地址，包含就认为是开放的，公开接口，可以没有token访问
      */
     @Value("${h.sys.auth.openApis:/error,/h-open/}")
